@@ -2,8 +2,9 @@
 
 int main(argc, argv[])
 {
-    int *a;
-    int *b;
+    t_stack *a;
+    t_stack *b;
 
+    a.size = argc;
     fill_stack_a(a, argv[]);
 }
