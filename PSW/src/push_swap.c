@@ -7,4 +7,6 @@ int main(argc, argv[])
 
     a.size = argc;
     fill_stack_a(a, argv[]);
+
+	
 }

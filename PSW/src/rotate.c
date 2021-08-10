@@ -1,74 +1,62 @@
 #include "../inc/push_swap.h"
 
-void rotate_a(int *arr)
+void rotate_a(t_stack *a)
 {
-    int before = arr [0];
+    int before = a.a.arr[0];
     int after;
-    int size = ft_intlen(arr);
     int i = 0;
 
-    if(size > 1)
+    if(a.size > 1)
     {
-        while (i++ < size)
-        {
-            after = arr[i + 1];
-            arr[i + 1] = before;
-            before = after; 
-        }
-        arr[0] = before;
+        aux = a.arr[a.size - 1];
+        a.arr[a.size - 1] = a.arr[0];
+        a.arr[0] = aux;
     }
     write(1, "ra\n", 3);
 }
 
-void rotate_b(int *arr)
+void rotate_b(t_stack *a)
 {
-    int before = arr [0];
+    int before = a.arr[0];
     int after;
-    int size = ft_intlen(arr);
     int i = 0;
 
-    if(size > 1)
+    if(a.size > 1)
     {
-        while (i++ < size)
-        {
-            after = arr[i + 1];
-            arr[i + 1] = before;
-            before = after; 
-        }
-        arr[0] = before;
+        aux = a.arr[a.size - 1];
+        a.arr[a.size - 1] = a.arr[0];
+        a.arr[0] = aux;
     }
     write(1, "rb\n", 3);
 }
 
-void rotate_both(int *a, int *b)
+void rotate_both(t_stack *a, t_stack *b)
 {
-    int before = arr [0];
+    int before = a.arr[0];
     int after;
-    int size = ft_intlen(a;
     int i;
 
     i = 0;
-    if(size > 1)
+    if(a.size > 1)
     {
-        while (i++ < size)
+        while (i++ < a.size)
         {
-            after = a[i + 1];
-            a[i + 1] = before;
+            after = a.arr[i + 1];
+            a.arr[i + 1] = before;
             before = after; 
         }
-        a[0] = before;
+        a.arr[0] = before;
     }
-    size = ft_intlen(b);
     i = 0;
-    if(size > 1)
+    if(a.size > 1)
     {
-        while (i++ < size)
+        while (i++ < b.size)
         {
-            after = b[i + 1];
-            b[i + 1] = before;
+            after = b.arr[i + 1];
+            b.arr[i + 1] = before;
             before = after; 
         }
-        b[0] = before;
+        b.arr[0] = before;
     }
     write(1, "rr\n", 3);
 }
