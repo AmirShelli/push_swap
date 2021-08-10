@@ -2,7 +2,7 @@
 
 void rotate_a(t_stack *a)
 {
-    int before = a.a.arr[0];
+    int before = a.arr[0];
     int after;
     int i = 0;
 
@@ -56,7 +56,7 @@ void rotate_both(t_stack *a, t_stack *b)
         a.arr[0] = before;
     }
     i = 0;
-    if(a.size > 1)
+    if(b.size > 1)
     {
         while (i++ < b.size)
         {
