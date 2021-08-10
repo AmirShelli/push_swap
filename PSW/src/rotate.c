@@ -8,24 +8,32 @@ void rotate_a(t_stack *a)
 
     if(a.size > 1)
     {
-        aux = a.arr[a.size - 1];
-        a.arr[a.size - 1] = a.arr[0];
-        a.arr[0] = aux;
+        while (i++ < a.size)
+        {
+            after = a.arr[i + 1];
+            a.arr[i + 1] = before;
+            before = after; 
+        }
+        a.arr[0] = before;
     }
     write(1, "ra\n", 3);
 }
 
 void rotate_b(t_stack *a)
 {
-    int before = a.arr[0];
+    int before = a.arr [0];
     int after;
     int i = 0;
 
     if(a.size > 1)
     {
-        aux = a.arr[a.size - 1];
-        a.arr[a.size - 1] = a.arr[0];
-        a.arr[0] = aux;
+        while (i++ < a.size)
+        {
+            after = a.arr[i + 1];
+            a.arr[i + 1] = before;
+            before = after; 
+        }
+        a.arr[0] = before;
     }
     write(1, "rb\n", 3);
 }
