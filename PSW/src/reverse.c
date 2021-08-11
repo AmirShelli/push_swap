@@ -1,10 +1,8 @@
 #include "../inc/push_swap.h"
 
-//UNDONE !
-
-void rotate_a(t_stack *a)
+void reverse_a(t_stack *a)
 {
-    int before = a.arr[a.size - 1];
+    int before = a.arr[0];
     int after;
     int i = 0;
 
@@ -21,9 +19,9 @@ void rotate_a(t_stack *a)
     write(1, "ra\n", 3);
 }
 
-void rotate_b(t_stack *a)
+void reverse_b(t_stack *a)
 {
-    int before = a.arr [a.size - 1];
+    int before = a.arr [0];
     int after;
     int i = 0;
 
@@ -40,9 +38,9 @@ void rotate_b(t_stack *a)
     write(1, "rb\n", 3);
 }
 
-void rotate_both(t_stack *a, t_stack *b)
+void reverse_both(t_stack *a, t_stack *b)
 {
-    int before = a.arr[a.size - 1];
+    int before = a.arr[0];
     int after;
     int i;
 
@@ -57,7 +55,7 @@ void rotate_both(t_stack *a, t_stack *b)
         }
         a.arr[0] = before;
     }
-	before = b.arr[b.size - 1];
+	before = b.arr[0];
     i = 0;
     if(b.size > 1)
     {
