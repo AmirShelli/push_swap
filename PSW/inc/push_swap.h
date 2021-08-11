@@ -2,6 +2,6 @@
 
 typedef struct s_stack
 {
-    int array[1000];
+    int* array;
     int size;
 }   t_stack;

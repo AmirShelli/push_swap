@@ -8,7 +8,7 @@ void rotate_a(t_stack *a)
 
     if(a.size > 1)
     {
-        while (--i > 0)
+        while (i-- > 0)
         {
             after = a.arr[i - 1];
             a.arr[i - 1] = before;
@@ -27,7 +27,7 @@ void rotate_b(t_stack *a)
 
     if(a.size > 1)
     {
-        while (--i > 0)
+        while (i-- > 0)
         {
             after = a.arr[i - 1];
             a.arr[i - 1] = before;
@@ -46,7 +46,7 @@ void rotate_both(t_stack *a, t_stack *b)
 
     if(a.size > 1)
     {
-        while (--i > 0)
+        while (i-- > 0)
         {
             after = a.arr[i - 1];
             a.arr[i - 1] = before;
@@ -57,7 +57,7 @@ void rotate_both(t_stack *a, t_stack *b)
     i = a.size;
     if(b.size > 1)
     {
-        while (--i > 0)
+        while (i-- > 0)
         {
             after = b.arr[i - 1];
             b.arr[i - 1] = before;
