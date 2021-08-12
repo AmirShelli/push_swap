@@ -21,7 +21,6 @@ int fillable(t_stack *a, char **args)
 	{
 		if(!ft_isnbr(*args))
 			return (0);
-		puts(*args);
 		a->arr[i++] = ft_atoi(*args++);
 	}
 	return (1);
@@ -38,12 +37,13 @@ t_stack *new_stack(int argc)
 int main(int argc, char *argv[])
 {
     t_stack *a = new_stack(--argc);
-    // t_stack *b = new_stack(0);
+    t_stack *b = new_stack(0);
 
 	// what about argc == 0 ?
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
-	rotate_a(a);
+	push_a(a,b);
 	
+	printf("size of a %d\n", a->size);
 	display_stack(a); // TEST
 }
