@@ -1,5 +1,18 @@
 #include "../inc/push_swap.h"
 
+void display_stack(t_stack *a)
+{
+	int size = a->size;
+	int i = 0;
+
+	while (i < size)
+	{
+		printf("%d element: %d\n", i, a->arr[i]);
+		i++;
+	}
+}
+/*** ^ T E S T ^ ***/
+
 int fillable(t_stack *a, char **args)
 {
 	int i = 0;
@@ -22,18 +35,6 @@ t_stack *new_stack(int argc)
 	return (a);
 }
 
-void display_stack(t_stack *a) // TEST
-{
-	int size = a->size;
-	int i = 0;
-
-	while (i < size)
-	{
-		printf("%d element: %d\n", i, a->arr[i]);
-		i++;
-	}
-}
-
 int main(int argc, char *argv[])
 {
     t_stack *a = new_stack(--argc);
@@ -42,6 +43,7 @@ int main(int argc, char *argv[])
 	// what about argc == 0 ?
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
-	display_stack(a);
+	rotate_a(a);
 	
+	display_stack(a); // TEST
 }
