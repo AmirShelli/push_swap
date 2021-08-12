@@ -22,7 +22,7 @@ t_stack *new_stack(int argc)
 	return (a);
 }
 
-void display_stack(t_stack *a)
+void display_stack(t_stack *a) // TEST
 {
 	int size = a->size;
 	int i = 0;
