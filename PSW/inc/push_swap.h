@@ -6,6 +6,9 @@ typedef struct s_stack
     int size;
 }   t_stack;
 
+void	move_backward(t_stack *a, int from);
+void	move_forward(t_stack *a, int from);
+
 void	push_a(t_stack *a, t_stack *b);
 void	push_b(t_stack *a, t_stack *b);
 void	swap_a(t_stack *a);

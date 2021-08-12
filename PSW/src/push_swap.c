@@ -10,6 +10,7 @@ void display_stack(t_stack *a)
 		printf("%d element: %d\n", i, a->arr[i]);
 		i++;
 	}
+	puts("\n");
 }
 /*** ^ T E S T ^ ***/
 
@@ -36,14 +37,15 @@ t_stack *new_stack(int argc)
 
 int main(int argc, char *argv[])
 {
-    t_stack *a = new_stack(--argc);
+    t_stack *a = new_stack(argc);
     t_stack *b = new_stack(0);
 
 	// what about argc == 0 ?
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
-	push_a(a,b);
+	move_backward(a, 0);
 	
-	printf("size of a %d\n", a->size);
 	display_stack(a); // TEST
+	display_stack(b); // TEST
+
 }
