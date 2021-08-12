@@ -2,70 +2,70 @@
 
 void reverse_a(t_stack *a)
 {
-    int before = a.arr[0];
+    int before = (*a).arr[0];
     int after;
     int i = 0;
 
-    if(a.size > 1)
+    if((*a).size > 1)
     {
-        while (i++ < a.size)
+        while (i++ < (*a).size)
         {
-            after = a.arr[i + 1];
-            a.arr[i + 1] = before;
+            after = (*a).arr[i + 1];
+            (*a).arr[i + 1] = before;
             before = after; 
         }
-        a.arr[0] = before;
+        (*a).arr[0] = before;
     }
     write(1, "ra\n", 3);
 }
 
 void reverse_b(t_stack *a)
 {
-    int before = a.arr [0];
+    int before = (*a).arr [0];
     int after;
     int i = 0;
 
-    if(a.size > 1)
+    if((*a).size > 1)
     {
-        while (i++ < a.size)
+        while (i++ < (*a).size)
         {
-            after = a.arr[i + 1];
-            a.arr[i + 1] = before;
+            after = (*a).arr[i + 1];
+            (*a).arr[i + 1] = before;
             before = after; 
         }
-        a.arr[0] = before;
+        (*a).arr[0] = before;
     }
     write(1, "rb\n", 3);
 }
 
 void reverse_both(t_stack *a, t_stack *b)
 {
-    int before = a.arr[0];
+    int before = (*a).arr[0];
     int after;
     int i;
 
     i = 0;
-    if(a.size > 1)
+    if((*a).size > 1)
     {
-        while (i++ < a.size)
+        while (i++ < (*a).size)
         {
-            after = a.arr[i + 1];
-            a.arr[i + 1] = before;
+            after = (*a).arr[i + 1];
+            (*a).arr[i + 1] = before;
             before = after; 
         }
-        a.arr[0] = before;
+        (*a).arr[0] = before;
     }
-	before = b.arr[0];
+	before = (*a).arr[0];
     i = 0;
-    if(b.size > 1)
+    if((*b).size > 1)
     {
-        while (i++ < b.size)
+        while (i++ < (*b).size)
         {
-            after = b.arr[i + 1];
-            b.arr[i + 1] = before;
+            after = (*b).arr[i + 1];
+            (*b).arr[i + 1] = before;
             before = after; 
         }
-        b.arr[0] = before;
+        (*b).arr[0] = before;
     }
     write(1, "rr\n", 3);
 }
