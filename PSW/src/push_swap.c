@@ -1,15 +1,15 @@
 #include "../inc/push_swap.h"
 
-int fill(t_stack *a, char **args)
+int fillable(t_stack *a, char **args)
 {
-	int i;
+	int i = 0;
 
-	while(*args++)
+	while(*args)
 	{
-		if(is_nbr(*args))
-			(*a).arr[i++] = ft_atoi(*args);
-		else
+		if(!ft_isnbr(*args))
 			return (0);
+		puts(*args);
+		a->arr[i++] = ft_atoi(*args++);
 	}
 	return (1);
 }
@@ -22,13 +22,26 @@ t_stack *new_stack(int argc)
 	return (a);
 }
 
-int main(int argc, char **argv[])
+void display_stack(t_stack *a)
 {
-    t_stack *a = new_stack(argc);
-    t_stack *b = new_stack(0);
+	int size = a->size;
+	int i = 0;
+
+	while (i < size)
+	{
+		printf("%d element: %d\n", i, a->arr[i]);
+		i++;
+	}
+}
+
+int main(int argc, char *argv[])
+{
+    t_stack *a = new_stack(--argc);
+    // t_stack *b = new_stack(0);
 
 	// what about argc == 0 ?
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
+	display_stack(a);
 	
 }
