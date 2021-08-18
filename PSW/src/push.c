@@ -2,6 +2,7 @@
 
 void push_b(t_stack *a, t_stack *b)
 {
+	move_forward(b, 0);
 	
     write(1, "pb\n", 3);
 }

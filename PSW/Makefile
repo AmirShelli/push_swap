@@ -18,6 +18,7 @@ $(NAME): $(OBJS)
 
 clean :
 	rm -rf $(wildcard ./*.o)
+	rm -rf $(wildcard ./*/*.o)
 	rm -rf $(wildcard ./*/*/*.o)
 
 fclean : clean

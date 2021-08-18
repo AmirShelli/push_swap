@@ -9,7 +9,7 @@ void move_forward(t_stack *a, int from)
 
 void move_backward(t_stack *a, int from)
 {
-	if(from > 0)
+	if(a->)
 	{
 		a->arr[from - 1] = a->arr[from];
 		if((a->size - 1) != from)
