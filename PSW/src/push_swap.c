@@ -1,4 +1,6 @@
 #include "../inc/push_swap.h"
+#include "../libft/main_libft/libft.h"
+
 
 void display_stack(t_stack *a)
 {
@@ -40,7 +42,7 @@ int main(int argc, char *argv[])
     t_stack *a = new_stack(argc);
     t_stack *b = new_stack(0);
 
-	// what about argc == 0 ?
+	// what about argc == 0 ? later.
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
 	move_backward(a, 0);
