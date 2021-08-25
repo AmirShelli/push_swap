@@ -9,7 +9,7 @@ void display_stack(t_stack *a)
 
 	while (i < size)
 	{
-		printf("%d element: %d\n", i, a->arr[i]);
+		printf("%d element: %d\n", i + 1, a->arr[i]);
 		i++;
 	}
 	puts("\n");
@@ -29,23 +29,26 @@ int fillable(t_stack *a, char **args)
 	return (1);
 }
 
-t_stack *new_stack(int argc)
+t_stack *new_stack(int alloc, int size)
 {
-	t_stack *a = malloc(sizeof(t_stack));
-	a->arr = malloc(sizeof(int) * argc);
-	a->size = argc;
-	return (a);
+	t_stack *stck = malloc(sizeof(t_stack));
+	stck->arr = malloc(sizeof(int) * alloc);
+	stck->size = size;
+	return (stck);
 }
 
 int main(int argc, char *argv[])
 {
-    t_stack *a = new_stack(argc);
-    t_stack *b = new_stack(0);
+	--argc;
+    t_stack *a = new_stack(argc, argc);
+    t_stack *b = new_stack(argc, 0);
 
 	// what about argc == 0 ? later.
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
-	move_backward(a, 0);
+	
+	// move_backward(a, 0); // sure about this?
+	rotate(a);
 	
 	display_stack(a); // TEST
 	display_stack(b); // TEST
