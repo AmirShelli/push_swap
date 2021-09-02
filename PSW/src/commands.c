@@ -10,8 +10,9 @@ void push(t_stack *a, t_stack *b)
         a->size -= 1;
         b->size += 1;
 	}
-    // write(1, "pb\n", 3);
+    // write(1, "pa\n", 3);
 }
+
 void swap(t_stack *a)
 {
     int aux;
@@ -24,6 +25,7 @@ void swap(t_stack *a)
     }
     // write(1, "sa\n", 3);
 }
+
 void rotate(t_stack *a)
 {
     int aux = a->arr[0];
@@ -35,6 +37,7 @@ void rotate(t_stack *a)
     }
     // write(1, "ra\n", 3);
 }
+
 void reverse(t_stack *a)
 {
     int aux = a->arr[a->size - 1];

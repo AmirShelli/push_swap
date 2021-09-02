@@ -13,3 +13,9 @@ void	push(t_stack *a, t_stack *b);
 void	swap(t_stack *a);
 void	reverse(t_stack *a);
 void	rotate(t_stack *a);
+
+int		fillable(t_stack *stack, char **args);
+t_stack	*new_stack(int alloc, int size);
+
+/*** ^ T E S T ^ ***/
+void	display_stack(t_stack *a);

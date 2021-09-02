@@ -2,21 +2,21 @@
 #include "../libft/main_libft/libft.h"
 
 
-void display_stack(t_stack *a)
+void display_stack(t_stack *stack)
 {
 	int size = a->size;
 	int i = 0;
 
 	while (i < size)
 	{
-		printf("%d element: %d\n", i + 1, a->arr[i]);
+		printf("%d element: %d\n", i + 1, stack->arr[i]);
 		i++;
 	}
 	puts("\n");
 }
 /*** ^ T E S T ^ ***/
 
-int fillable(t_stack *a, char **args)
+int fillable(t_stack *stack, char **args)
 {
 	int i = 0;
 
@@ -24,7 +24,7 @@ int fillable(t_stack *a, char **args)
 	{
 		if(!ft_isnbr(*args))
 			return (0);
-		a->arr[i++] = ft_atoi(*args++);
+		stack->arr[i++] = ft_atoi(*args++);
 	}
 	return (1);
 }
@@ -32,8 +32,8 @@ int fillable(t_stack *a, char **args)
 t_stack *new_stack(int alloc, int size)
 {
 	t_stack *stck = malloc(sizeof(t_stack));
-	stck->arr = malloc(sizeof(int) * alloc);
-	stck->size = size;
+	stack->arr = malloc(sizeof(int) * alloc);
+	stack->size = size;
 	return (stck);
 }
 
