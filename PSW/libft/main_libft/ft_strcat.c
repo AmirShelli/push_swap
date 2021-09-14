@@ -3,7 +3,6 @@
 char	*ft_strcat(char *dest, char *src)
 {
 	char	*start;
-	int		i;
 
 	start = dest;
 	while (*dest)

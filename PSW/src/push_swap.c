@@ -4,7 +4,7 @@
 
 void display_stack(t_stack *stack)
 {
-	int size = a->size;
+	int size = stack->size;
 	int i = 0;
 
 	while (i < size)
@@ -31,10 +31,10 @@ int fillable(t_stack *stack, char **args)
 
 t_stack *new_stack(int alloc, int size)
 {
-	t_stack *stck = malloc(sizeof(t_stack));
+	t_stack *stack = malloc(sizeof(t_stack));
 	stack->arr = malloc(sizeof(int) * alloc);
 	stack->size = size;
-	return (stck);
+	return (stack);
 }
 
 int main(int argc, char *argv[])
@@ -48,9 +48,7 @@ int main(int argc, char *argv[])
 		return(write(1, "Error", 5));
 	
 	// move_backward(a, 0); // sure about this?
-	rotate(a);
 	
 	display_stack(a); // TEST
 	display_stack(b); // TEST
-
 }
