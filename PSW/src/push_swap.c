@@ -12,7 +12,6 @@ void display_stack(t_stack *stack)
 		printf("%d element: %d\n", i + 1, stack->arr[i]);
 		i++;
 	}
-	puts("\n");
 }
 /*** ^ T E S T ^ ***/
 
@@ -47,6 +46,8 @@ int main(int argc, char *argv[])
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
 	
+	bubble_sort(a, b);
 	display_stack(a); // TEST
-	display_stack(b); // TEST
+	printf("is stack_a sorted? %d\n", is_sorted(a));
+	// display_stack(b); // TEST
 }
