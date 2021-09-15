@@ -47,8 +47,6 @@ int main(int argc, char *argv[])
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
 	
-	// move_backward(a, 0); // sure about this?
-	
 	display_stack(a); // TEST
 	display_stack(b); // TEST
 }
