@@ -11,7 +11,7 @@ void bubble_sort(t_stack *a, t_stack *b)
 		{	
 			if (a->arr[i] > a->arr[i + 1])
 			{	
-				reach(i, a, b);
+				pb_until(i, a, b);
 				pick("sa", a, b);
 			}
 			i++;

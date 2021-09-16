@@ -14,7 +14,7 @@ void move_backward(t_stack *a, int from)
 			move_backward(a, from + 1);
 }
 
-void reach(int to, t_stack *a, t_stack *b)
+void pb_until(int to, t_stack *a, t_stack *b)
 {
 	int	from = 0;
 

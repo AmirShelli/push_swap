@@ -9,7 +9,7 @@ typedef struct s_stack
 void	move_backward(t_stack *a, int from);
 void	move_forward(t_stack *a, int from);
 
-void	reach(int to, t_stack *a, t_stack *b);
+void	pb_until(int to, t_stack *a, t_stack *b);
 void	pa_all(t_stack *a, t_stack *b);
 
 void	push(t_stack *a, t_stack *b);
