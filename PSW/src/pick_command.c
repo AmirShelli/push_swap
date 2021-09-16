@@ -1,71 +1,36 @@
 #include "../inc/push_swap.h"
 
-void s(t_stack *a, t_stack *b, char *cmd);
-void r(t_stack *a, t_stack *b, char *cmd);
-void rr(t_stack *a, t_stack *b, char *cmd);
-void p(t_stack *a, t_stack *b, char *cmd); 
+void	run(t_stack *a, t_stack *b, char *cmd, void (*func)(t_stack *));
 
 void pick(char *cmd, t_stack *a, t_stack *b)
 {
 	if (cmd[0] == 's')
-		s(a, b, cmd);
+		run(a, b, cmd, &swap);
 	else if (cmd[0] == 'r' && !cmd[2])
-		r(a, b, cmd);
+		run(a, b, cmd, &rotate);
 	else if (cmd[0] == 'r' && cmd[2])
-		rr(a, b, cmd);
+		run(a, b, &cmd[1], &reverse);
 	else if (cmd[0] == 'p')
-		p(a, b, cmd);
+	{	
+		if (cmd[1] == 'a')
+			push(a, b);
+		else if (cmd[1] == 'b')
+			push(b, a);
+	}
 	write(1, cmd, ft_strlen(cmd));
 	write(1, "\n", 1);
 }
 
-// can pass the function as a parameter.
-// Make a structure of stacks, 
-// 'cause this looks bad tho.
-
-void	s(t_stack *a, t_stack *b, char *cmd)
+void	run(t_stack *a, t_stack *b, char *cmd, void (*func)(t_stack *))
 {
 	if (cmd[1] == 'a')
-		swap(a);
+		func(a);
 	else if (cmd[1] == 'b')
-		swap(b);
+		func(b);
 	else
 	{
-		swap(a);
-		swap(b);
+		func(a);
+		func(b);
 	}
 }
 
-void r(t_stack *a, t_stack *b, char *cmd)
-{
-	if (cmd[1] == 'a')
-		rotate(a);
-	else if (cmd[1] == 'b')
-		rotate(b);
-	else
-	{
-		rotate(a);
-		rotate(b);
-	}
-}
-
-void rr(t_stack *a, t_stack *b, char *cmd)
-{
-	if (cmd[1] == 'a')
-		reverse(a);
-	else if (cmd[1] == 'b')
-		reverse(b);
-	else
-	{
-		reverse(a);
-		reverse(b);
-	}
-}
-
-void p(t_stack *a, t_stack *b, char *cmd)
-{
-	if (cmd[1] == 'a')
-		push(b, a);
-	else if (cmd[1] == 'b')
-		push(a, b);
-}

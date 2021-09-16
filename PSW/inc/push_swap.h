@@ -23,6 +23,8 @@ int		fillable(t_stack *stack, char **args);
 t_stack	*new_stack(int alloc, int size);
 
 // int		sort(t_stack *a, t_stack *b);
+void smallsort(t_stack *a);
+
 
 /*** ^ T E S T ^ ***/
 void	display_stack(t_stack *a);

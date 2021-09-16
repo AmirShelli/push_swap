@@ -22,7 +22,6 @@ clean :
 	rm -rf $(wildcard ./*/*/*.o)
 
 fclean : clean
-	$(clean)
 	$(MAKE) fclean -C ./libft/main_libft
 	rm -rf $(NAME)
 

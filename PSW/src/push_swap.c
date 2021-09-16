@@ -1,6 +1,8 @@
 #include "../inc/push_swap.h"
 #include "../libft/main_libft/libft.h"
 
+// Make a structure of stacks, 
+// 'cause this looks bad tho.
 
 void display_stack(t_stack *stack)
 {
@@ -40,7 +42,7 @@ int main(int argc, char *argv[])
 {
 	--argc;
     t_stack *a = new_stack(argc, argc);
-    t_stack *b = new_stack(argc, 0);
+    // t_stack *b = new_stack(argc, 0);
 
 	// what about argc == 0 ? later.
 	if(!fillable(a, &argv[1]))
@@ -48,7 +50,9 @@ int main(int argc, char *argv[])
 
 
 	/*** ^ T E S T ^ ***/
-	bubble_sort(a, b);
+	// smallsort(a);
+	pick("rra", a, NULL);
 	display_stack(a);
 	printf("is stack_a sorted? %d\n", is_sorted(a));
+	
 }

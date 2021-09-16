@@ -22,7 +22,6 @@ void	swap(t_stack *a)
         a->arr[0] = a->arr[1];
         a->arr[1] = aux;
     }
-    // write(1, "sa\n", 3);
 }
 
 void rotate(t_stack *a)
@@ -34,7 +33,6 @@ void rotate(t_stack *a)
         move_backward(a, 0);
         a->arr[a->size - 1] = aux;
     }
-    // write(1, "ra\n", 3);
 }
 
 void reverse(t_stack *a)
@@ -46,5 +44,4 @@ void reverse(t_stack *a)
         move_forward(a, 0);
         a->arr[0] = aux;
     }
-    // write(1, "rra\n", 4);
 }
