@@ -19,6 +19,10 @@ void pick(char *cmd, t_stack *a, t_stack *b)
 	write(1, "\n", 1);
 }
 
+// can pass the function as a parameter.
+// Make a structure of stacks, 
+// 'cause this looks bad tho.
+
 void	s(t_stack *a, t_stack *b, char *cmd)
 {
 	if (cmd[1] == 'a')

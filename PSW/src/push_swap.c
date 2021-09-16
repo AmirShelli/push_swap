@@ -45,9 +45,10 @@ int main(int argc, char *argv[])
 	// what about argc == 0 ? later.
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
-	
+
+
+	/*** ^ T E S T ^ ***/
 	bubble_sort(a, b);
-	display_stack(a); // TEST
+	display_stack(a);
 	printf("is stack_a sorted? %d\n", is_sorted(a));
-	// display_stack(b); // TEST
 }
