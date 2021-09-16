@@ -3,7 +3,7 @@
 void s(t_stack *a, t_stack *b, char *cmd);
 void r(t_stack *a, t_stack *b, char *cmd);
 void rr(t_stack *a, t_stack *b, char *cmd);
-void p(t_stack *a, t_stack *b, char *cmd);
+void p(t_stack *a, t_stack *b, char *cmd); 
 
 void pick(char *cmd, t_stack *a, t_stack *b)
 {
@@ -19,7 +19,7 @@ void pick(char *cmd, t_stack *a, t_stack *b)
 	write(1, "\n", 1);
 }
 
-void s(t_stack *a, t_stack *b, char *cmd)
+void	s(t_stack *a, t_stack *b, char *cmd)
 {
 	if (cmd[1] == 'a')
 		swap(a);

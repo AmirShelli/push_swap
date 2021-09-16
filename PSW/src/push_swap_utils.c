@@ -13,3 +13,19 @@ void move_backward(t_stack *a, int from)
 		if((a->size - 1) >= from)
 			move_backward(a, from + 1);
 }
+
+void reach(int to, t_stack *a, t_stack *b)
+{
+	int	from = 0;
+
+	while (from++ != to)
+		pick("pb", a, b);
+}
+
+void pa_all(t_stack *a, t_stack *b)
+{
+	int	i = 0;
+
+	while(i++ < b->size)
+		pick("pa", a, b);
+}

@@ -1,22 +1,21 @@
 #include "../inc/push_swap.h"
 
-void push(t_stack *a, t_stack *b)
+void	push(t_stack *a, t_stack *b)
 {
-    if(a->size)
-    {
-        move_forward(b, 0);
-        b->arr[0] = a->arr[0];
-        move_backward(a, 0);
-        a->size -= 1;
-        b->size += 1;
+	if (a->size)
+	{
+		move_forward(b, 0);
+		b->arr[0] = a->arr[0];
+		move_backward(a, 0);
+		a->size -= 1;
+		b->size += 1;
 	}
-    // write(1, "pa\n", 3);
 }
 
-void swap(t_stack *a)
+void	swap(t_stack *a)
 {
-    int aux;
-	
+	int	aux;
+
     if(a->size > 1)
     {
         aux = a->arr[0];
