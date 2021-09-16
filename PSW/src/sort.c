@@ -33,13 +33,13 @@ void smallsort(t_stack *a)
 		pick("sa", a, NULL);
 		pick("rra", a, NULL);
 	}
-	else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[2] > arr[0])
+	else if (arr[0] > arr[1] && arr[1] < arr[2] && arr[0] > arr[2])
 		pick("ra", a, NULL);
-	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[2] < arr[0])
+	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] < arr[2])
 	{
 		pick("sa", a, NULL);
 		pick("ra", a, NULL);
 	}
-	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[2] > arr[0])
+	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
 		pick("rra", a, NULL);
 }

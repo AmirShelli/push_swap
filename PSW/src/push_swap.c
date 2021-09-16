@@ -50,8 +50,7 @@ int main(int argc, char *argv[])
 
 
 	/*** ^ T E S T ^ ***/
-	// smallsort(a);
-	pick("rra", a, NULL);
+	smallsort(a);
 	display_stack(a);
 	printf("is stack_a sorted? %d\n", is_sorted(a));
 	
