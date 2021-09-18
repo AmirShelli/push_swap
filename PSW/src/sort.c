@@ -43,3 +43,4 @@ void smallsort(t_stack *a)
 	else if (arr[0] < arr[1] && arr[1] > arr[2] && arr[0] > arr[2])
 		pick("rra", a, NULL);
 }
+

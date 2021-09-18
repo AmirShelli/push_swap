@@ -7,14 +7,14 @@ void move_forward(t_stack *a, int from)
 	a->arr[from + 1] = a->arr[from];
 }
 
-void move_backward(t_stack *a, int from)
+void	move_backward(t_stack *a, int from)
 {
-		a->arr[from - 1] = a->arr[from];
-		if((a->size - 1) >= from)
-			move_backward(a, from + 1);
+	a->arr[from - 1] = a->arr[from];
+	if ((a->size - 1) >= from)
+		move_backward(a, from + 1);
 }
 
-void pb_until(int to, t_stack *a, t_stack *b)
+void	pb_until(int to, t_stack *a, t_stack *b)
 {
 	int	from = 0;
 
@@ -22,7 +22,7 @@ void pb_until(int to, t_stack *a, t_stack *b)
 		pick("pb", a, b);
 }
 
-void pa_all(t_stack *a, t_stack *b)
+void	pa_all(t_stack *a, t_stack *b)
 {
 	int	i = 0;
 
@@ -43,3 +43,15 @@ int	is_sorted(t_stack *stack)
 	}
 	return (1);
 }
+
+int	is_biggest(t_stack *stack)
+{
+	int	i;
+
+	i = 1;
+	while (i < size)
+		if (stack->arr[0] < stack->arr[i])
+			return (0);
+	return (1);
+}
+
