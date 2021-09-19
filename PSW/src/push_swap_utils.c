@@ -39,7 +39,7 @@ int	is_sorted(t_stack *stack)
 	{	
 		if (stack->arr[i] > stack->arr[i + 1])
 			return (0);
-		i++;	
+		i++;
 	}
 	return (1);
 }
@@ -54,4 +54,5 @@ int	is_biggest(t_stack *stack)
 			return (0);
 	return (1);
 }
+
 
