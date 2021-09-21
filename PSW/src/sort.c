@@ -52,22 +52,18 @@ void smallsort(t_stack *a)
 
 void fivesort(t_stack *a, t_stack *b)
 {
-	int act_size;
+	int min, max;
 
-	act_size = a->size;
-	while(!is_sorted(a))
+	while (!(is_in(min, b) && is_in(max, b)))
 	{
-		while (a->size > 3)
+		if(a->arr[0] == min || a->arr[0] == max)
 			pick("pb", a, b);
-		smallsort(a);
-		if(b->arr[0] < b->arr[1])
-
-		while (a->size != act_size)
-		{	
-			pick("pa", a , b);
-			if (is_biggest(a))
-				pick("ra", a, b);
-			
-		}
+		pick("rra", a, b);
+	}
+	while(b->size)
+	{	
+		pick("pa", a, b);
+		if (a->arr[0] == max)
+			pick("ra", a, b);
 	}
 }
