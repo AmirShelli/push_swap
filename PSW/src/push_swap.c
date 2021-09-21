@@ -42,7 +42,7 @@ int main(int argc, char *argv[])
 {
 	--argc;
     t_stack *a = new_stack(argc, argc);
-    // t_stack *b = new_stack(argc, 0);
+    t_stack *b = new_stack(argc, 0);
 
 	// what about argc == 0 ? later.
 	if(!fillable(a, &argv[1]))
@@ -50,7 +50,7 @@ int main(int argc, char *argv[])
 
 
 	/*** ^ T E S T ^ ***/
-	fivesort(a);
+	fivesort(a, b);
 	display_stack(a);
 	printf("is stack_a sorted? %d\n", is_sorted(a));
 }

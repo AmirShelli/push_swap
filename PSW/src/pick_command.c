@@ -12,9 +12,9 @@ void pick(char *cmd, t_stack *a, t_stack *b)
 		run(a, b, &cmd[1], &reverse);
 	else if (cmd[0] == 'p')
 	{	
-		if (cmd[1] == 'a')
+		if (cmd[1] == 'b')
 			push(a, b);
-		else if (cmd[1] == 'b')
+		else if (cmd[1] == 'a')
 			push(b, a);
 	}
 	write(1, cmd, ft_strlen(cmd));

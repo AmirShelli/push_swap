@@ -54,12 +54,16 @@ void fivesort(t_stack *a, t_stack *b)
 {
 	int min, max;
 
+	min = smallest(a);
+	max = biggest(a);
+	printf("you max %d \n", max);
 	while (!(is_in(min, b) && is_in(max, b)))
 	{
-		if(a->arr[0] == min || a->arr[0] == max)
+		while (a->arr[0] == min || a->arr[0] == max)
 			pick("pb", a, b);
 		pick("rra", a, b);
 	}
+	smallsort(a);
 	while(b->size)
 	{	
 		pick("pa", a, b);

@@ -44,15 +44,45 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-int	is_biggest(t_stack *stack)
+int	biggest(t_stack *stack)
+{
+	int	i;
+	int max;
+
+	i = 1;
+	max = stack->arr[0];
+	while (i < stack->size)
+	{	
+		if ( max < stack->arr[i])
+			max = stack->arr[i];
+		i++;
+	}
+	return (max);
+}
+
+int	smallest(t_stack *stack)
+{
+	int	i;
+	int min;
+
+	i = 1;
+	min = stack->arr[0];
+	while (i < stack->size)
+	{	
+		if ( min > stack->arr[i])
+			min = stack->arr[i];
+		i++;
+	}
+	return (min);
+}
+
+int is_in(int num, t_stack *stack)
 {
 	int	i;
 
-	i = 1;
+	i = 0;
 	while (i < stack->size)
-		if (stack->arr[0] < stack->arr[i])
-			return (0);
-	return (1);
+		if (num == stack->arr[i++])
+			return (1);
+	return (0);
 }
-
-

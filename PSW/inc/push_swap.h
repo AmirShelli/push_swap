@@ -6,11 +6,16 @@ typedef	struct s_stack
 	int size;
 }		t_stack;
 
+void	display_stack(t_stack *stack);
+
 void	move_backward(t_stack *a, int from);
 void	move_forward(t_stack *a, int from);
 
 void	pb_until(int to, t_stack *a, t_stack *b);
 void	pa_all(t_stack *a, t_stack *b);
+int		is_in(int num, t_stack *stack);
+int		biggest(t_stack *stack);
+int		smallest(t_stack *stack);
 
 void	push(t_stack *a, t_stack *b);
 void	swap(t_stack *a);
