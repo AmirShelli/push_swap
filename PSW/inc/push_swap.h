@@ -1,10 +1,10 @@
 #include "../libft/main_libft/libft.h"
 
-typedef struct s_stack
+typedef	struct s_stack
 {
-    int* arr;
-    int size;
-}   t_stack;
+	int* arr;
+	int size;
+}		t_stack;
 
 void	move_backward(t_stack *a, int from);
 void	move_forward(t_stack *a, int from);

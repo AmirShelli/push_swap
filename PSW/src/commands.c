@@ -16,32 +16,32 @@ void	swap(t_stack *a)
 {
 	int	aux;
 
-    if(a->size > 1)
-    {
-        aux = a->arr[0];
-        a->arr[0] = a->arr[1];
-        a->arr[1] = aux;
-    }
+	if (a->size > 1)
+	{
+		aux = a->arr[0];
+		a->arr[0] = a->arr[1];
+		a->arr[1] = aux;
+	}
 }
 
-void rotate(t_stack *a)
+void	rotate(t_stack *a)
 {
-    int aux = a->arr[0];
+	int	aux = a->arr[0];
 
-    if(a->size > 1)
-    {
-        move_backward(a, 0);
-        a->arr[a->size - 1] = aux;
-    }
+	if (a->size > 1)
+	{
+		move_backward(a, 0);
+		a->arr[a->size - 1] = aux;
+	}
 }
 
-void reverse(t_stack *a)
+void	reverse(t_stack *a)
 {
-    int aux = a->arr[a->size - 1];
-    
-    if(a->size > 1)
-    {
-        move_forward(a, 0);
-        a->arr[0] = aux;
-    }
+	int	aux = a->arr[a->size - 1];
+
+	if (a->size > 1)
+	{
+		move_forward(a, 0);
+		a->arr[0] = aux;
+	}
 }
