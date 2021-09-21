@@ -59,9 +59,10 @@ void fivesort(t_stack *a, t_stack *b)
 	printf("you max %d \n", max);
 	while (!(is_in(min, b) && is_in(max, b)))
 	{
-		while (a->arr[0] == min || a->arr[0] == max)
+		if (a->arr[0] == min || a->arr[0] == max)
 			pick("pb", a, b);
-		pick("rra", a, b);
+		else
+			pick("rra", a, b);
 	}
 	smallsort(a);
 	while(b->size)
