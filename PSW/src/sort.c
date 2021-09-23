@@ -72,3 +72,8 @@ void fivesort(t_stack *a, t_stack *b)
 			pick("ra", a, b);
 	}
 }
+
+void insertionsort(t_stack *a, t_stack *b)
+{
+	
+}
