@@ -47,8 +47,7 @@ int main(int argc, char *argv[])
 	// what about argc == 0 ? later.
 	if(!fillable(a, &argv[1]))
 		return(write(1, "Error", 5));
-
-
+	
 	/*** ^ T E S T ^ ***/
 	fivesort(a, b);
 	display_stack(a);

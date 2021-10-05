@@ -33,4 +33,3 @@ void	run(t_stack *a, t_stack *b, char *cmd, void (*func)(t_stack *))
 		func(b);
 	}
 }
-

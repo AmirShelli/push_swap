@@ -26,8 +26,9 @@ void	swap(t_stack *a)
 
 void	rotate(t_stack *a)
 {
-	int	aux = a->arr[0];
+	int	aux;
 
+	aux = a->arr[0];
 	if (a->size > 1)
 	{
 		move_backward(a, 0);
@@ -37,8 +38,9 @@ void	rotate(t_stack *a)
 
 void	reverse(t_stack *a)
 {
-	int	aux = a->arr[a->size - 1];
+	int	aux;
 
+	aux = a->arr[a->size - 1];
 	if (a->size > 1)
 	{
 		move_forward(a, 0);

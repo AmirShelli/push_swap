@@ -26,7 +26,7 @@ void	pa_all(t_stack *a, t_stack *b)
 {
 	int	i = 0;
 
-	while(i++ < b->size)
+	while (i++ < b->size)
 		pick("pa", a, b);
 }
 
@@ -76,7 +76,7 @@ int	smallest(t_stack *stack)
 	return (min);
 }
 
-int is_in(int num, t_stack *stack)
+int	is_in(int num, t_stack *stack)
 {
 	int	i;
 
