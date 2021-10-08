@@ -1,5 +1,7 @@
 #include "../inc/push_swap.h"
 
+//push_to_be
+
 void push_to_b(t_stacks stacks)
 {
 	int order;
@@ -24,18 +26,70 @@ void push_to_b(t_stacks stacks)
 	}
 }
 
-int index_a
-
-int find_best_index(t_stacks stacks)
+//best_index
+int index_a(t_stacks stacks, int num)
 {
+	int index_a;
+
+	index_a = 0;
+	while (index_a < stacks->a.size)
+	{
+		if (num < stacks->a.arr[index_a])
+			if(index_b < stacks->a.size/2)
+				return(index_a);
+			else
+				return(size - index_a);
+	}
+}
+
+int index_b(t_stacks stacks, int index_b)
+{
+		if(index_b < stacks->b.size/2)
+			return(index_b + index_a(stacks, stacks->b.arr[index_b]));
+		else
+			return ((size - index_b) + index_a(stacks, stacks->b.arr[index_b]));
+}
+
+int best_index(t_stacks stacks)
+{
+	int index_b;
+	int best_moves;
+	int best_index;
+
+	index_b = 0;
+	best_index = index_b;
+	best_moves = index_b(stacks, index_b) + index_a(stacks, index_a);
 	while (index_b < stacks->b.size)
 	{
-		if(index_b < stacks->b.size/2)
-			move = index_b + index_a(stacks, stacks->b.arr[index_b])
-		else
-			move = (size - index_b) + index_a(index_b)
-		if(best_move > move)
-			best_move = move;
+		if(best_moves >= index_b(stacks, index_b) + index_a(stacks, index_a))
+		{	
+			best_moves = index_b(stacks, index_b) + index_a(stacks, index_a);
+			best_index = index_b;
+		}
 		index_b++;
+	}
+	return (best_index);
+}
+
+//move!
+
+void push_to_a(t_stacks stacks)
+{
+	int index_a;
+	int index_b;
+
+	while(stacks->b.size)
+	{
+		index_a = index_a(stacks, best_index(stacks));
+		index_b = index_b(stacks, best_index(stacks));
+		while(index_a || index_b)
+		{
+			if(index_a && index_b)
+				move(stacks, );
+			else
+
+		}
+
+		pick("pa", stacks);
 	}
 }
