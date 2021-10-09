@@ -72,18 +72,18 @@ int best_index(t_stacks stacks)
 }
 
 //move!
-void move_until(index, cmd)
+
 void push_to_a(t_stacks stacks)
 {
-	int *index;
+	int		*index;
+	char	*cmd;
 
-	while(stacks->b.size)
+	while (stacks->b.size)
 	{
 		index[0] = index_a(stacks, best_index(stacks));
 		index[1] = index_b(stacks, best_index(stacks));
 		while(index_a || index_b)
 		{
-			
 			while(index[0] && index[1])
 			{	
 				if (index[0] >= stacks->a.size/2 && index[1] >= stacks->b.size/2)
@@ -106,16 +106,43 @@ void push_to_a(t_stacks stacks)
 			}
 			else
 			{
+				if (index[1] >= stacks->b.size/2)
+					cmd = "rb"
+				else
+				{
+					cmd = "rrb";
+					index[1] = stacks->b.size - index[1]
+				}
 				while(index[1])
-				{	
-					if (index[1] >= stacks->b.size/2)
-						pick("rb", stacks);
-					else
-						pick("rrb", stacks)
+				{
+					pick(cmd, stacks);
 					index[1]--;
 				}
 			}
 		}
 		pick("pa", stacks);
+	}
+}
+
+void move(smaller, bigger, index, *stacks)
+{
+	t_stack stack;
+	char	*cmd;
+
+	if (smaller[1] == 'a') //careful!!! rra or ra??
+		stack = stacks->a;
+	else
+		stack = stacks->b;
+	if (index >= stack.size/2)
+		cmd = bigger
+	else
+	{
+		cmd = smaller;
+		index = stack.size - index
+	}
+	while(index)
+	{
+		pick(cmd, stacks);
+		index--;
 	}
 }
