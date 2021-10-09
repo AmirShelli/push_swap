@@ -72,24 +72,50 @@ int best_index(t_stacks stacks)
 }
 
 //move!
-
+void move_until(index, cmd)
 void push_to_a(t_stacks stacks)
 {
-	int index_a;
-	int index_b;
+	int *index;
 
 	while(stacks->b.size)
 	{
-		index_a = index_a(stacks, best_index(stacks));
-		index_b = index_b(stacks, best_index(stacks));
+		index[0] = index_a(stacks, best_index(stacks));
+		index[1] = index_b(stacks, best_index(stacks));
 		while(index_a || index_b)
 		{
-			if(index_a && index_b)
-				move(stacks, );
+			
+			while(index[0] && index[1])
+			{	
+				if (index[0] >= stacks->a.size/2 && index[1] >= stacks->b.size/2)
+					pick("rr");
+				else
+					pick("rrr");
+				index[0]--;
+				index[1]--;	
+			}
+			if(index[0])
+			{
+				while(index[0])
+				{	
+					if (index[0] >= stacks->a.size/2)
+						pick("ra", stacks);
+					else
+						pick("rra", stacks)
+					index[0]--;
+				}
+			}
 			else
-
+			{
+				while(index[1])
+				{	
+					if (index[1] >= stacks->b.size/2)
+						pick("rb", stacks);
+					else
+						pick("rrb", stacks)
+					index[1]--;
+				}
+			}
 		}
-
 		pick("pa", stacks);
 	}
 }
