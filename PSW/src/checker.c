@@ -54,7 +54,6 @@ int main(int argc, char *argv[])
 
 	--argc;	
 	stacks = new_stack(argc);
-	// what about argc == 0 ? later.
 	if(!fillable(stacks->a, &argv[1]) && argc != 0)
 		return(write(1, "Error\n", 6));
 	else
@@ -69,3 +68,4 @@ int main(int argc, char *argv[])
 		return(write(1, "KO", 3));
 	}
 }
+// don't forget to MAKEFILE
