@@ -1,6 +1,6 @@
 #include "../inc/push_swap.h"
 
-void	push(t_stack *a, t_stack *b)
+void	push(t_stack a, t_stack b)
 {
 	if (a->size)
 	{
@@ -12,7 +12,7 @@ void	push(t_stack *a, t_stack *b)
 	}
 }
 
-void	swap(t_stack *a)
+void	swap(t_stack a)
 {
 	int	aux;
 
@@ -24,7 +24,7 @@ void	swap(t_stack *a)
 	}
 }
 
-void	rotate(t_stack *a)
+void	rotate(t_stack a)
 {
 	int	aux;
 
@@ -36,7 +36,7 @@ void	rotate(t_stack *a)
 	}
 }
 
-void	reverse(t_stack *a)
+void	reverse(t_stack a)
 {
 	int	aux;
 

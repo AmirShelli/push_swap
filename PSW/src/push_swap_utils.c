@@ -1,5 +1,6 @@
 #include "../inc/push_swap.h"
 
+//needed for pa/pb
 void move_forward(t_stack *a, int from)
 {
 	if((a->size - 1 >= from + 1))
@@ -14,75 +15,54 @@ void	move_backward(t_stack *a, int from)
 		move_backward(a, from + 1);
 }
 
-void	pb_until(int to, t_stack *a, t_stack *b)
+//push everything to b except for the ordered part
+void push_to_b(t_stacks stacks)
 {
-	int	from = 0;
-
-	while (from++ != to)
-		pick("pb", a, b);
-}
-
-void	pa_all(t_stack *a, t_stack *b)
-{
-	int	i = 0;
-
-	while (i++ < b->size)
-		pick("pa", a, b);
-}
-
-int	is_sorted(t_stack *stack)
-{
-	int size = stack->size;
-	int i = 0;
-
-	while (i < size - 1)
-	{	
-		if (stack->arr[i] > stack->arr[i + 1])
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	biggest(t_stack *stack)
-{
-	int	i;
-	int max;
-
-	i = 1;
-	max = stack->arr[0];
-	while (i < stack->size)
-	{	
-		if ( max < stack->arr[i])
-			max = stack->arr[i];
-		i++;
-	}
-	return (max);
-}
-
-int	smallest(t_stack *stack)
-{
-	int	i;
-	int min;
-
-	i = 1;
-	min = stack->arr[0];
-	while (i < stack->size)
-	{	
-		if ( min > stack->arr[i])
-			min = stack->arr[i];
-		i++;
-	}
-	return (min);
-}
-
-int	is_in(int num, t_stack *stack)
-{
-	int	i;
+	int order;
+	int i;
 
 	i = 0;
-	while (i < stack->size)
-		if (num == stack->arr[i++])
-			return (1);
-	return (0);
+	order = find_order(stacks);
+	while (i < stacks->a.size - 1)
+	{
+		if(stacks->a.arr[0] == order)
+		{	
+			while(stacks->a.arr[0] < stacks->a.arr[1])
+			{	
+				pick("rra", stacks);
+				i++;
+			}
+			pick("rra", stacks);
+		}
+		else
+			pick("pb", stacks);
+		i++;
+	}
+}
+
+//pushes everything back to a
+void push_to_a(t_stacks *stacks)
+{
+	int		*index;
+
+	while (stacks->b.size)
+	{
+		index[0] = index_a(stacks, best_index(stacks));
+		index[1] = index_b(stacks, best_index(stacks));
+		if (index[0] >= a.size/2 && index[1] >= b.size/2)
+			while(index[0]-- && index[1]--)
+				pick("rrr", stacks);
+		else if (index[0] < a.size/2 && index[1] < b.size/2)
+		{
+			index_a = a.size - index_a;
+			index_b = b.size - index_b;
+			while(index[0]-- && index[1]--)
+				pick("rr", stacks);
+		}
+		if(index[0])
+			move("ra", "rra", index[0], stacks)
+		else
+			move("rb", "rrb", index[1], stacks)
+		pick("pa", stacks);
+	}
 }

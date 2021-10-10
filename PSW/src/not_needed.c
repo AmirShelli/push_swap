@@ -1,3 +1,62 @@
+void	pb_until(int to, t_stack *a, t_stack *b)
+{
+	int	from = 0;
+
+	while (from++ != to)
+		pick("pb", a, b);
+}
+
+void	pa_all(t_stack *a, t_stack *b)
+{
+	int	i = 0;
+
+	while (i++ < b->size)
+		pick("pa", a, b);
+}
+
+int	biggest(t_stack *stack)
+{
+	int	i;
+	int max;
+
+	i = 1;
+	max = stack->arr[0];
+	while (i < stack->size)
+	{	
+		if ( max < stack->arr[i])
+			max = stack->arr[i];
+		i++;
+	}
+	return (max);
+}
+
+int	smallest(t_stack *stack)
+{
+	int	i;
+	int min;
+
+	i = 1;
+	min = stack->arr[0];
+	while (i < stack->size)
+	{	
+		if ( min > stack->arr[i])
+			min = stack->arr[i];
+		i++;
+	}
+	return (min);
+}
+
+int	is_in(int num, t_stack *stack)
+{
+	int	i;
+
+	i = 0;
+	while (i < stack->size)
+		if (num == stack->arr[i++])
+			return (1);
+	return (0);
+}
+
 #include "../inc/push_swap.h" 
 
 void bubble_sort(t_stack *a, t_stack *b)
@@ -71,9 +130,4 @@ void fivesort(t_stack *a, t_stack *b)
 		if (a->arr[0] == max)
 			pick("ra", a, b);
 	}
-}
-
-void insertionsort(t_stack *a, t_stack *b)
-{
-	
 }

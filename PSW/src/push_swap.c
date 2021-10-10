@@ -4,19 +4,6 @@
 // Make a structure of stacks, 
 // 'cause this looks bad tho.
 
-void display_stack(t_stack *stack)
-{
-	int size = stack->size;
-	int i = 0;
-
-	while (i < size)
-	{
-		printf("%d element: %d\n", i + 1, stack->arr[i]);
-		i++;
-	}
-}
-/*** ^ T E S T ^ ***/
-
 int fillable(t_stack *stack, char **args)
 {
 	int i = 0;
