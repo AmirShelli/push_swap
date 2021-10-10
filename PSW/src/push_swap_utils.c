@@ -12,18 +12,18 @@ void push_to_b(t_stacks stacks)
 
 	i = 0;
 	order = find_order(stacks);
-	while (i < stacks->a.size - 1)
+	while (i < stacks->a.size)
 	{
-		if(stacks->a.arr[0] == order)
+		if(stacks->a.arr[0] == order && order != 1)
 		{	
 			while(stacks->a.arr[0] < stacks->a.arr[1])
 			{	
-				pick("rra", stacks);
+				pick("ra", stacks);
 				i++;
 			}
-			pick("rra", stacks);
+			pick("ra", stacks);
 		}
-		else
+		else if (stacks->a.arr[0] != order)
 			pick("pb", stacks);
 		i++;
 	}

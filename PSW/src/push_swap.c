@@ -21,20 +21,24 @@ void move(char *smaller,char *bigger, int index, t_stacks *stacks)
 	}
 }
 
-int fillable(t_stack stack, char **args)
+int fillable(t_stack stack, char **argv)
 {
 	int i = 0;
 
-	while(*args)
+	while (*argv)
 	{
 		if(!ft_isnbr(*args))
 			return (0);
 		stack->arr[i++] = ft_atoi(*args++);
 	}
+	i = 1;
+	while (stack.size-- > 1)
+		if (*(stack.arr)++ == stacks.arr[i++])
+			return (0);
 	return (1);
 }
 
-t_stack *new_stacks(int alloc, int size)
+t_stack *new_stacks(int size)
 {
 	t_stacks *stacks = malloc(sizeof(t_stacks));
 	stacks->a.size = size;

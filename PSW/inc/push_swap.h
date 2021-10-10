@@ -23,7 +23,7 @@ void	reverse(t_stack *a);
 void	rotate(t_stack *a);
 
 int		fillable(t_stack *stack, char **args);
-t_stack	*new_stack(int alloc, int size);
+t_stack	*new_stacks(int size);
 void	move(char *smaller,char *bigger, int index, t_stacks *stacks)
 
 void	push_to_b(t_stacks stacks);
