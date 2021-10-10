@@ -1,19 +1,8 @@
 #include "../inc/push_swap.h"
 
-//needed for pa/pb
-void move_forward(t_stack *a, int from)
-{
-	if((a->size - 1 >= from + 1))
-		move_forward(a, from + 1);
-	a->arr[from + 1] = a->arr[from];
-}
-
-void	move_backward(t_stack *a, int from)
-{
-	a->arr[from - 1] = a->arr[from];
-	if ((a->size - 1) >= from)
-		move_backward(a, from + 1);
-}
+int index_a(t_stacks stacks, int num);
+int index_b(t_stacks stacks, int index_b);
+int best_index(t_stacks stacks);
 
 //push everything to b except for the ordered part
 void push_to_b(t_stacks stacks)
@@ -65,4 +54,48 @@ void push_to_a(t_stacks *stacks)
 			move("rb", "rrb", index[1], stacks)
 		pick("pa", stacks);
 	}
+}
+
+int index_a(t_stacks stacks, int num)
+{
+	int index_a;
+
+	index_a = 0;
+	while (index_a < stacks->a.size)
+	{
+		if (num < stacks->a.arr[index_a])
+			if(index_b < stacks->a.size/2)
+				return(index_a);
+			else
+				return(size - index_a);
+	}
+}
+
+int index_b(t_stacks stacks, int index_b)
+{
+		if(index_b < stacks->b.size/2)
+			return(index_b + index_a(stacks, stacks->b.arr[index_b]));
+		else
+			return ((size - index_b) + index_a(stacks, stacks->b.arr[index_b]));
+}
+
+int best_index(t_stacks stacks)
+{
+	int index_b;
+	int best_moves;
+	int best_index;
+
+	index_b = 0;
+	best_index = index_b;
+	best_moves = index_b(stacks, index_b) + index_a(stacks, index_a);
+	while (index_b < stacks->b.size)
+	{
+		if(best_moves >= index_b(stacks, index_b) + index_a(stacks, index_a))
+		{	
+			best_moves = index_b(stacks, index_b) + index_a(stacks, index_a);
+			best_index = index_b;
+		}
+		index_b++;
+	}
+	return (best_index);
 }

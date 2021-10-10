@@ -1,10 +1,27 @@
 #include "../inc/push_swap.h"
 #include "../libft/main_libft/libft.h"
 
-// Make a structure of stacks, 
-// 'cause this looks bad tho.
+//move!
+void move(char *smaller,char *bigger, int index, t_stacks *stacks)
+{
+	t_stack stack;
 
-int fillable(t_stack *stack, char **args)
+	if (smaller[1] == 'a')
+		stack = stacks->a;
+	else
+		stack = stacks->b;
+	if (index >= stack.size/2)
+		while(index--)
+			pick(bigger, stacks);
+	else
+	{
+		index = stack.size - index;
+		while(index--)
+			pick(smaller, stacks);
+	}
+}
+
+int fillable(t_stack stack, char **args)
 {
 	int i = 0;
 
@@ -17,26 +34,22 @@ int fillable(t_stack *stack, char **args)
 	return (1);
 }
 
-t_stack *new_stack(int alloc, int size)
+t_stack *new_stacks(int alloc, int size)
 {
-	t_stack *stack = malloc(sizeof(t_stack));
-	stack->arr = malloc(sizeof(int) * alloc);
-	stack->size = size;
-	return (stack);
+	t_stacks *stacks = malloc(sizeof(t_stacks));
+	stacks->a.size = size;
+	stacks->b.size = 0;
+	return (stacks);
 }
 
 int main(int argc, char *argv[])
 {
 	--argc;
-    t_stack *a = new_stack(argc, argc);
-    t_stack *b = new_stack(argc, 0);
-
+    t_stack *stacks = new_stack(argc);
 	// what about argc == 0 ? later.
-	if(!fillable(a, &argv[1]))
+	if(!fillable(stacks->a, &argv[1]))
 		return(write(1, "Error", 5));
 	
 	/*** ^ T E S T ^ ***/
-	fivesort(a, b);
-	display_stack(a);
 	printf("is stack_a sorted? %d\n", is_sorted(a));
 }

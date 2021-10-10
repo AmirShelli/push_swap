@@ -1,3 +1,5 @@
+#include "../inc/push_swap.h"
+
 void display_stack(t_stack *stack)
 {
 	int size = stack->size;
