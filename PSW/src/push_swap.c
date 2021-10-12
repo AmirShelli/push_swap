@@ -1,32 +1,40 @@
 #include "../inc/push_swap.h"
 #include "../libft/main_libft/libft.h"
 
-// Make a structure of stacks, 
-// 'cause this looks bad tho.
-
-void display_stack(t_stack stack)
+//move!
+void move(char *smaller,char *bigger, int index, t_stacks *stacks)
 {
-	int size = stack.size;
-	int i = 0;
+	t_stack stack;
 
-	while (i < size)
+	if (smaller[1] == 'a')
+		stack = stacks->a;
+	else
+		stack = stacks->b;
+	if (index >= stack.size/2)
+		while(index--)
+			pick(bigger, stacks);
+	else
 	{
-		printf("%d element: %d\n", i + 1, stack.arr[i]);
-		i++;
+		index = stack.size - index;
+		while(index--)
+			pick(smaller, stacks);
 	}
 }
-/*** ^ T E S T ^ ***/
 
-int fillable(int *arr, char **args)
+int fillable(t_stack stack, char **argv)
 {
 	int i = 0;
 
-	while(*args)
+	while (*argv)
 	{
-		if(!ft_isnbr(*args))
+		if(!ft_isnbr(*argv))
 			return (0);
-		arr[i++] = ft_atoi(*args++);
+		stack.arr[i++] = ft_atoi(*argv++);
 	}
+	i = 1;
+	while (stack.size-- > 1)
+		if (*(stack.arr)++ == stack.arr[i++])
+			return (0);
 	return (1);
 }
 
