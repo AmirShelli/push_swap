@@ -58,11 +58,11 @@ int main(int argc, char *argv[])
 
 	t_stacks *stacks = new_stacks(argc);
 	// what about argc == 0 ? later.
-	if(!fillable(stacks->a.arr, &argv[1]))
+	if(!fillable(stacks->a, &argv[1]))
 		return(write(1, "Error", 5));
 	
 	/*** ^ T E S T ^ ***/
 	fivesort(stacks);
 	display_stack(stacks->a);
-	printf("is stack_a sorted? %d\n", is_sorted(stacks->a));
+	printf("is stack_a sorted? %d\n", is_sorted(stacks));
 }

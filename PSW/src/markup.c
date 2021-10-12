@@ -27,26 +27,3 @@ int	find_order(t_stacks *stacks)
 	}
 	return (order_number);
 }
-
-void	make_flagged(t_stacks *stacks)
-{
-	int ordered;
-	int i;
-
-	ordered = find_order(stacks);
-	while(i < stacks->a.size)
-	{
-		if (stacks->a.arr[i])
-		{
-			while (stacks->a.arr[i] < stacks->a.arr[i + 1])
-				stacks->a.boolie[i++] = 1;
-		}
-		stacks->a.boolie[i++] = 0;
-	}
-	
-}
-
-void	should_swap()
-{
-
-}

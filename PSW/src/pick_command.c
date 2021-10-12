@@ -1,6 +1,6 @@
 #include "../inc/push_swap.h"
 
-void	run(t_stacks *stacks, char *cmd, void (*func)(t_stack *));
+void	run(t_stacks *stacks, char *cmd, void (*func)(t_stack));
 
 void pick(char *cmd, t_stacks *stacks)
 {
@@ -21,7 +21,7 @@ void pick(char *cmd, t_stacks *stacks)
 	write(1, "\n", 1);
 }
 
-void	run(t_stacks *stacks, char *cmd, void (*func)(t_stack *))
+void	run(t_stacks *stacks, char *cmd, void (*func)(t_stack))
 {
 	if (cmd[1] == 'a')
 		func(stacks->a);
