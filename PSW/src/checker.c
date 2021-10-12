@@ -53,14 +53,14 @@ int main(int argc, char *argv[])
 	char 	*line;
 
 	--argc;	
-	stacks = new_stack(argc);
+	stacks = new_stacks(argc);
 	if(!fillable(stacks->a, &argv[1]) && argc != 0)
 		return(write(1, "Error\n", 6));
 	else
 	{
-		while (get_next_line > 0)
+		while (get_next_line(&line) > 0)
 		{
-			pick(&line, stacks);
+			pick(line, stacks);
 			free(line);
 		}
 		if(is_sorted(stacks))

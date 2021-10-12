@@ -41,7 +41,6 @@ void	init_stack(t_stack *stack, int alloc, int size)
 {
 	stack->arr = malloc(sizeof(int) * alloc);
 	stack->size = size;
-	return (stack);
 }
 
 t_stacks *new_stacks(int size)
@@ -49,6 +48,7 @@ t_stacks *new_stacks(int size)
 	t_stacks *stacks = malloc(sizeof(t_stacks));
 	init_stack(&stacks->a, size, size);
     init_stack(&stacks->b, size, 0);
+	return(stacks);
 }
 
 int main(int argc, char *argv[])
