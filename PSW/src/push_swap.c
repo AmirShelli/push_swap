@@ -1,5 +1,4 @@
 #include "../inc/push_swap.h"
-#include "../libft/main_libft/libft.h"
 
 //move!
 void move(char *smaller,char *bigger, int index, t_stacks *stacks)

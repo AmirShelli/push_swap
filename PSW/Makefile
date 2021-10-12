@@ -6,7 +6,7 @@ SRCS =  $(wildcard ./src/*.c)
 
 OBJS = $(SRCS:.c=.o)
 
-INCLUDES = -I./includes
+INCLUDES = -I ./inc
 
 CC = gcc -Wall -Wextra -Werror
 
@@ -14,7 +14,7 @@ all : $(NAME)
 
 $(NAME): $(OBJS)
 	$(MAKE) all -C ./libft/main_libft
-	$(CC) -o $(NAME) $(LIBFT) $(OBJS)
+	$(CC) -o $(NAME) $(LIBFT) $(INCLUDES) $(OBJS)
 
 clean :
 	rm -rf $(wildcard ./*.o)
