@@ -50,26 +50,26 @@ void smallsort(t_stack *a)
 		pick("sa", a, NULL);
 }
 
-void fivesort(t_stack *a, t_stack *b)
+void fivesort(t_stacks *stacks)
 {
 	int min, max;
 
-	min = smallest(a);
-	max = biggest(a);
+	min = smallest(stacks->a);
+	max = biggest(stacks->a);
 	printf("you max %d \n", max);
-	while (!(is_in(min, b) && is_in(max, b)))
+	while (!(is_in(min, stacks->b) && is_in(max, stacks->b)))
 	{
-		if (a->arr[0] == min || a->arr[0] == max)
-			pick("pb", a, b);
+		if (stacks->a->arr[0] == min || stacks->a->arr[0] == max)
+			pick("pb", stacks);
 		else
-			pick("rra", a, b);
+			pick("rra", stacks);
 	}
-	smallsort(a);
-	while(b->size)
+	smallsort(stacks->a);
+	while(stacks->b->size)
 	{	
-		pick("pa", a, b);
-		if (a->arr[0] == max)
-			pick("ra", a, b);
+		pick("pa", stacks);
+		if (stacks->a->arr[0] == max)
+			pick("ra", stacks);
 	}
 }
 
