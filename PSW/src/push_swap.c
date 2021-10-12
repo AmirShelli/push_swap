@@ -45,7 +45,7 @@ void	init_stack(t_stack *stack, int alloc, int size)
 	return (stack);
 }
 
-t_stacks *new_stacks(int size, char *argv[])
+t_stacks *new_stacks(int size)
 {
 	t_stacks *stacks = malloc(sizeof(t_stacks));
 	init_stack(&stacks->a, size, size);
