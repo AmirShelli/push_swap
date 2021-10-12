@@ -16,19 +16,19 @@ typedef	struct s_push_swap
 	t_stack b;
 }		t_stacks;
 
-void	move_backward(t_stack a, int from);
-void	move_forward(t_stack a, int from);
+void	move_backward(t_stack *a, int from);
+void	move_forward(t_stack *a, int from);
 void	pick(char *cmd, t_stacks *stacks);
 
-void	push(t_stack a, t_stack b);
-void	swap(t_stack a);
-void	reverse(t_stack a);
-void	rotate(t_stack a);
+void	push(t_stack *a, t_stack *b);
+void	swap(t_stack *a);
+void	reverse(t_stack *a);
+void	rotate(t_stack *a);
 
 int		fillable(t_stack stack, char **args);
 t_stacks	*new_stacks(int size);
 void	move(char *smaller,char *bigger, int index, t_stacks *stacks);
-
+int	find_order(t_stacks *stacks);
 void	push_to_b(t_stacks *stacks);
 void	push_to_a(t_stacks *stacks);
 

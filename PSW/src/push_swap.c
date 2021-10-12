@@ -61,7 +61,6 @@ int main(int argc, char *argv[])
 		return(write(1, "Error", 5));
 	
 	/*** ^ T E S T ^ ***/
-	fivesort(stacks);
 	display_stack(stacks->a);
 	printf("is stack_a sorted? %d\n", is_sorted(stacks));
 }

@@ -47,25 +47,25 @@ int get_next_line(char **line)
 	return(rd);
 }
 
-int main(int argc, char *argv[])
-{
-    t_stacks *stacks;
-	char 	*line;
+// int main(int argc, char *argv[])
+// {
+//     t_stacks *stacks;
+// 	char 	*line;
 
-	--argc;	
-	stacks = new_stacks(argc);
-	if(!fillable(stacks->a, &argv[1]) && argc != 0)
-		return(write(1, "Error\n", 6));
-	else
-	{
-		while (get_next_line(&line) > 0)
-		{
-			pick(line, stacks);
-			free(line);
-		}
-		if(is_sorted(stacks))
-			return(write(1, "OK", 3));
-		return(write(1, "KO", 3));
-	}
-}
+// 	--argc;	
+// 	stacks = new_stacks(argc);
+// 	if(!fillable(stacks->a, &argv[1]) && argc != 0)
+// 		return(write(1, "Error\n", 6));
+// 	else
+// 	{
+// 		while (get_next_line(&line) > 0)
+// 		{
+// 			pick(line, stacks);
+// 			free(line);
+// 		}
+// 		if(is_sorted(stacks))
+// 			return(write(1, "OK", 3));
+// 		return(write(1, "KO", 3));
+// 	}
+// }
 // don't forget to MAKEFILE

@@ -1,7 +1,7 @@
 #include "../inc/push_swap.h"
 
 int index_a(t_stacks *stacks, int num);
-int index_b(t_stacks *stacks, int index_b);
+int movement(t_stack stack, int index);
 int best_index(t_stacks *stacks);
 
 //push everything to b except for the ordered part
@@ -18,13 +18,13 @@ void push_to_b(t_stacks *stacks)
 		{	
 			while(stacks->a.arr[0] < stacks->a.arr[1])
 			{	
-				pick("ra", stacks);
+				pick("ra\n", stacks);
 				i++;
 			}
-			pick("ra", stacks);
+			pick("ra\n", stacks);
 		}
 		else if (stacks->a.arr[0] != order)
-			pick("pb", stacks);
+			pick("pb\n", stacks);
 		i++;
 	}
 }
@@ -32,70 +32,67 @@ void push_to_b(t_stacks *stacks)
 //pushes everything back to a
 void push_to_a(t_stacks *stacks)
 {
-	int		*index;
+	int		index[2];
 
 	while (stacks->b.size)
 	{
 		index[0] = index_a(stacks, best_index(stacks));
-		index[1] = index_b(stacks, best_index(stacks));
+		index[1] = movement(stacks->b, best_index(stacks));
 		if (index[0] >= stacks->a.size/2 && index[1] >= stacks->b.size/2)
 			while(index[0]-- && index[1]--)
-				pick("rrr", stacks);
+				pick("rrr\n", stacks);
 		else if (index[0] < stacks->a.size/2 && index[1] < stacks->b.size/2)
 		{
 			index[0] = stacks->a.size - index[0];
 			index[1] = stacks->b.size - index[1];
 			while(index[0]-- && index[1]--)
-				pick("rr", stacks);
+				pick("rr\n", stacks);
 		}
 		if(index[0])
-			move("ra", "rra", index[0], stacks);
+			move("ra\n", "rra\n", index[0], stacks);
 		else
-			move("rb", "rrb", index[1], stacks);
-		pick("pa", stacks);
+			move("rb\n", "rrb\n", index[1], stacks);
+		pick("pa\n", stacks);
 	}
 }
 
 int index_a(t_stacks *stacks, int num)
 {
-	int index_a;
+	int index;
 
-	index_a = 0;
-	while (index_a < stacks->a.size)
-	{
-		if (num < stacks->a.arr[index_a])
-			if(index_b < stacks->a.size/2)
-				return(index_a);
-			else
-				return(stacks->a.size - index_a);
-	}
+	index = 0;
+	while (index < stacks->a.size - 1 && num > stacks->a.arr[index])
+		index++;
+	return (index);
 }
 
-int index_b(t_stacks *stacks, int index_b)
+int movement(t_stack stack, int index)
 {
-		if(index_b < stacks->b.size/2)
-			return(index_b + index_a(stacks, stacks->b.arr[index_b]));
+		if(index < stack.size/2)
+			return(index);
 		else
-			return ((stacks->b.size - index_b) + index_a(stacks, stacks->b.arr[index_b]));
+			return ((stack.size - index));
 }
 
 int best_index(t_stacks *stacks)
 {
-	int index;
+	int index_b;
+	int num_moves;
 	int best_moves;
 	int best_index;
 
-	index = 0;
-	best_index = index;
-	best_moves = index_b(stacks, index_b) + index_a(stacks, index_a);
-	while (index < stacks->b.size)
+	index_b = 0;
+	best_index = index_b;
+	best_moves = movement(stacks->b, index_b) + movement(stacks->b, index_a(stacks, index_b));
+	while (index_b < stacks->b.size)
 	{
-		if(best_moves >= index_b(stacks, index_b) + index_a(stacks, index_a))
+		num_moves = movement(stacks->b, index_b) + movement(stacks->b, index_a(stacks, index_b));
+		if(best_moves >= num_moves)
 		{	
-			best_moves = index_b(stacks, index_b) + index_a(stacks, index_a);
-			best_index = index;
+			best_moves = num_moves;
+			best_index = index_b;
 		}
-		index++;
+		index_b++;
 	}
 	return (best_index);
 }
