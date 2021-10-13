@@ -7,13 +7,13 @@ typedef	struct s_stack
 {
 	int *arr;
 	int size;
-	int middle;
 }		t_stack;
 
 typedef	struct s_push_swap
 {
 	t_stack a;
 	t_stack b;
+	int middle;
 }		t_stacks;
 
 void	move_backward(t_stack *a, int from);

@@ -3,9 +3,10 @@
 int index_a(t_stacks *stacks, int num);
 int movement(t_stack stack, int index);
 int best_index(t_stacks *stacks);
+int	find_order(t_stacks *stacks);
 
 //push everything to b except for the ordered part
-void push_to_b(t_stacks *stacks)
+void push_to_b(t_stacks *stacks, int flag)
 {
 	int order;
 	int i;
@@ -23,7 +24,7 @@ void push_to_b(t_stacks *stacks)
 			}
 			pick("ra\n", stacks);
 		}
-		else if (stacks->a.arr[0] != order)
+		else if (stacks->a.arr[0] != order && (stacks->a.arr[0] - stacks->middle) * flag > 0) // if -1 -> arr[0] < middle, if 1 -> arr[0] > middle
 			pick("pb\n", stacks);
 		i++;
 	}
@@ -37,7 +38,7 @@ void push_to_a(t_stacks *stacks)
 	while (stacks->b.size)
 	{
 		index[0] = index_a(stacks, best_index(stacks));
-		index[1] = movement(stacks->b, best_index(stacks));
+		index[1] = best_index(stacks);
 		if (index[0] >= stacks->a.size/2 && index[1] >= stacks->b.size/2)
 			while(index[0]-- && index[1]--)
 				pick("rrr\n", stacks);
@@ -50,7 +51,7 @@ void push_to_a(t_stacks *stacks)
 		}
 		if(index[0])
 			move("ra\n", "rra\n", index[0], stacks);
-		else
+		else if(index[1])
 			move("rb\n", "rrb\n", index[1], stacks);
 		pick("pa\n", stacks);
 	}
@@ -95,4 +96,32 @@ int best_index(t_stacks *stacks)
 		index_b++;
 	}
 	return (best_index);
+}
+
+int	find_order(t_stacks *stacks)
+{
+	int	i;
+	int order;
+	int biggest_order;
+	int	order_number;
+
+	i = 0;
+	biggest_order = 0;
+	order = 0;
+	while (i < stacks->a.size - 1)
+	{
+		if (stacks->a.arr[i] < stacks->a.arr[i + 1])
+			order++;
+		else
+		{	
+			if (biggest_order < order)
+			{	
+				biggest_order = order;
+				order_number = stacks->a.arr[i - order];
+			}
+			order = 0;
+		}
+		i++;
+	}
+	return (order_number);
 }

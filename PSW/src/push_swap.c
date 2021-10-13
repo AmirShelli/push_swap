@@ -48,6 +48,7 @@ t_stacks *new_stacks(int size)
 	t_stacks *stacks = malloc(sizeof(t_stacks));
 	init_stack(&stacks->a, size, size);
     init_stack(&stacks->b, size, 0);
+	// stacks->middle = find_middle(stacks); find the middle!!!
 	return(stacks);
 }
 
