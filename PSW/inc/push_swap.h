@@ -29,7 +29,7 @@ int		fillable(t_stack stack, char **args);
 t_stacks	*new_stacks(int size);
 void	move(char *smaller,char *bigger, int index, t_stacks *stacks);
 int	find_order(t_stacks *stacks);
-void	push_to_b(t_stacks *stacks);
+void	push_to_b(t_stacks *stacks, int flag);
 void	push_to_a(t_stacks *stacks);
 
 // not needed - delete

@@ -19,6 +19,17 @@ void move(char *smaller,char *bigger, int index, t_stacks *stacks)
 			pick(smaller, stacks);
 	}
 }
+int average(t_stack stack)
+{
+	int size;
+	int sum;
+
+	size = stack.size;
+	sum = 0;
+	while(size--)
+		sum += stack.arr[size];
+	return(sum/stack.size);
+}
 
 int fillable(t_stack stack, char **argv)
 {
@@ -48,7 +59,7 @@ t_stacks *new_stacks(int size)
 	t_stacks *stacks = malloc(sizeof(t_stacks));
 	init_stack(&stacks->a, size, size);
     init_stack(&stacks->b, size, 0);
-	// stacks->middle = find_middle(stacks); find the middle!!!
+	stacks->middle = average(stacks->a);
 	return(stacks);
 }
 
@@ -62,6 +73,9 @@ int main(int argc, char *argv[])
 		return(write(1, "Error", 5));
 	
 	/*** ^ T E S T ^ ***/
+	display_stack(stacks->a);
+	// printf("order is = %d\n", find_order(stacks));
+	push_to_b(stacks, 1);
 	display_stack(stacks->a);
 	printf("is stack_a sorted? %d\n", is_sorted(stacks));
 }

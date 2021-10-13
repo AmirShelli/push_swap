@@ -13,7 +13,7 @@ void push_to_b(t_stacks *stacks, int flag)
 
 	i = 0;
 	order = find_order(stacks);
-	while (i < stacks->a.size)
+	while (i < stacks->a.size - 1)
 	{
 		if(stacks->a.arr[0] == order && order != 1)
 		{	
@@ -24,10 +24,44 @@ void push_to_b(t_stacks *stacks, int flag)
 			}
 			pick("ra\n", stacks);
 		}
-		else if (stacks->a.arr[0] != order && (stacks->a.arr[0] - stacks->middle) * flag > 0) // if -1 -> arr[0] < middle, if 1 -> arr[0] > middle
+		else if (stacks->a.arr[0] != order && (stacks->a.arr[0] - stacks->middle) * flag < 0)
 			pick("pb\n", stacks);
 		i++;
 	}
+}
+
+int	find_order(t_stacks *stacks)
+{
+	int	i;
+	int order;
+	int biggest_order;
+	int	order_number;
+
+	i = 0;
+	biggest_order = 0;
+	order_number= stacks->a.arr[0];
+	order = 0;
+	while (i < stacks->a.size - 1)
+	{
+		if (stacks->a.arr[i] < stacks->a.arr[i + 1])
+			order++;
+		else
+		{	
+			if (biggest_order < order)
+			{	
+				biggest_order = order;
+				order_number = stacks->a.arr[i - order];
+			}
+			order = 0;
+		}
+		i++;
+	}
+	return (order_number);
+}
+
+int seperate_order()
+{
+
 }
 
 //pushes everything back to a
@@ -107,6 +141,7 @@ int	find_order(t_stacks *stacks)
 
 	i = 0;
 	biggest_order = 0;
+	order_number= stacks->a.arr[0];
 	order = 0;
 	while (i < stacks->a.size - 1)
 	{
