@@ -6,13 +6,14 @@ int best_index(t_stacks *stacks);
 int	find_order(t_stacks *stacks);
 
 //push everything to b except for the ordered part
-void push_to_b(t_stacks *stacks, int flag)
+void push_to_b(t_stacks *stacks, int flag) //
 {
 	int order;
 	int i;
 
 	i = 0;
-	order = find_order(stacks);
+	order = seperate_order(stacks);
+
 	while (i < stacks->a.size - 1)
 	{
 		if(stacks->a.arr[0] == order && order != 1)
@@ -59,9 +60,21 @@ int	find_order(t_stacks *stacks)
 	return (order_number);
 }
 
-int seperate_order()
+int seperate_order(t_stacks *stacks) //put away the ordered part, devide on ra and rra, returns amount of movements
 {
+	int order;
 
+	order = find_order(stacks);
+	if (order >= stacks->a.size/2)
+		while(order-- && stacks->a.arr[0] < stacks->a.arr[1])
+			pick("ra\n", stacks);
+	else
+	{
+		order = stacks->a.size - order ;
+		while(order-- && stacks->a.arr[0] < stacks->a.arr[1])
+			pick("ra\n", stacks);
+	}
+	return (find_order(stacks));
 }
 
 //pushes everything back to a
