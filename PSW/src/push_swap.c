@@ -50,20 +50,25 @@ void calculate(t_stacks *stacks)
 	stacks->smallest = sorted[0];
 }
 
-int fillable(t_stack stack, char **argv)
+int is_valid(t_stack stack, char **argv)
 {
 	int i = 0;
+	int *arr;
 
+	arr = stack.arr;
 	while (*argv)
 	{
 		if(!ft_isnbr(*argv))
 			return (0);
-		stack.arr[i++] = ft_atoi(*argv++);
+		arr[i++] = ft_atoi(*argv++);
 	}
 	i = 1;
-	// while (stack.size-- > 1)
-	// 	if (*stack.arr++ == stack.arr[i++])
-	// 		return (0);
+	while (stack.size-- > 1) 
+	{	
+		if (*arr == arr[i++])
+			return (0);
+		arr++;
+	}
 	return (1);
 }
 
@@ -88,7 +93,7 @@ int main(int argc, char *argv[])
 
 	t_stacks *stacks = new_stacks(argc);
 	// what about argc == 0 ? later.
-	if(!fillable(stacks->a, &argv[1])) //refactor this bs, make is_valid and fill by itself ?
+	if(!is_valid(stacks->a, &argv[1])) // refactor this bs, make is_valid and fill by itself ?
 		return(write(1, "Error", 5));
 	
 	/* after checking that everything is good
