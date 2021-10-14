@@ -44,7 +44,7 @@ void calculate(t_stacks *stacks)
 		while (j < stacks->a.size - i - 1)
 		{
 			if(sorted[j] > sorted[j + 1])
-				swap_numbers(&sorted[j], &sorted[j + 1])
+				swap_numbers(&sorted[j], &sorted[j + 1]);
 			j++;
 		}
 		i++;
