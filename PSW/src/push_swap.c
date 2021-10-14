@@ -42,9 +42,9 @@ int fillable(t_stack stack, char **argv)
 		stack.arr[i++] = ft_atoi(*argv++);
 	}
 	i = 1;
-	while (stack.size-- > 1)
-		if (*(stack.arr)++ == stack.arr[i++])
-			return (0);
+	// while (stack.size-- > 1)
+	// 	if (*stack.arr++ == stack.arr[i++])
+	// 		return (0);
 	return (1);
 }
 
@@ -75,7 +75,8 @@ int main(int argc, char *argv[])
 	/*** ^ T E S T ^ ***/
 	display_stack(stacks->a);
 	// printf("order is = %d\n", find_order(stacks));
-	push_to_b(stacks, 1);
+	// push_to_b(stacks, 1);
+	seperate_order(stacks);
 	display_stack(stacks->a);
 	printf("is stack_a sorted? %d\n", is_sorted(stacks));
 }

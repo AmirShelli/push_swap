@@ -5,27 +5,22 @@ int movement(t_stack stack, int index);
 int best_index(t_stacks *stacks);
 int seperate_order(t_stacks *stacks);
 
-//push everything to b except for the ordered part
+//push everything to b except for the ordered part // need to call separate order before this!
 void push_to_b(t_stacks *stacks, int flag) 
 {
 	int order;
 	int i;
+	int size;
 
-	i = 0;
-	order = seperate_order(stacks);
-
-	while (i < stacks->a.size - 1)
+	order = find_order(stacks);
+	size = stacks->a.size;
+	if (order <= size/2)
+		i = movement(stacks->a, order);
+	else
+		size = size - movement(stacks->a, order);
+	while (i < size - 1)
 	{
-		if(stacks->a.arr[0] == order && order != 1)
-		{	
-			while(stacks->a.arr[0] < stacks->a.arr[1])
-			{	
-				pick("ra\n", stacks);
-				i++;
-			}
-			pick("ra\n", stacks);
-		}
-		else if (stacks->a.arr[0] != order && (stacks->a.arr[0] - stacks->middle) * flag < 0)
+		if (stacks->a.arr[0] != order && (stacks->a.arr[0] > stacks->middle) * flag < 0)
 			pick("pb\n", stacks);
 		i++;
 	}
@@ -72,7 +67,7 @@ int seperate_order(t_stacks *stacks) //put away the ordered part, devide on ra a
 	{
 		order = stacks->a.size - order ;
 		while(order-- && stacks->a.arr[0] < stacks->a.arr[1])
-			pick("ra\n", stacks);
+			pick("rra\n", stacks);
 	}
 	return (find_order(stacks));
 }
