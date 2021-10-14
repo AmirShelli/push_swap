@@ -15,7 +15,9 @@ typedef	struct s_push_swap
 	t_stack a;
 	t_stack b;
 	int middle;
+	int smallest;
 }		t_stacks;
+
 
 void	move_backward(t_stack *a, int from);
 void	move_forward(t_stack *a, int from);

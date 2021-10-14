@@ -5,6 +5,18 @@ int movement(t_stack stack, int index);
 int best_index(t_stacks *stacks);
 int seperate_order(t_stacks *stacks);
 
+void ultimate_sort(t_stacks *stacks)
+{
+	if(is_sorted(stacks))
+	{
+		seperate_order(stacks);
+		push_to_b(stacks, BIGGER);
+		push_to_b(stacks, SMALLER);
+		push_to_a(stacks);
+		move("ra\n", "rra\n", stacks->smallest, stacks);
+	}
+}
+
 //push everything to b except for the ordered part // need to call separate order before this!
 void push_to_b(t_stacks *stacks, int flag) 
 {
@@ -60,15 +72,7 @@ int seperate_order(t_stacks *stacks) //put away the ordered part, devide on ra a
 	int order;
 
 	order = find_order(stacks);
-	if (order >= stacks->a.size/2)
-		while(order-- && stacks->a.arr[0] < stacks->a.arr[1])
-			pick("ra\n", stacks);
-	else
-	{
-		order = stacks->a.size - order ;
-		while(order-- && stacks->a.arr[0] < stacks->a.arr[1])
-			pick("rra\n", stacks);
-	}
+	move("ra\n", "rra\n", order, stacks);
 	return (find_order(stacks));
 }
 

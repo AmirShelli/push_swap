@@ -6,7 +6,7 @@ SRCS =  $(wildcard ./src/*.c)
 
 OBJS = $(SRCS:.c=.o)
 
-INCLUDES = -I ./inc
+INCLUDES = -I ./inc 
 
 CC = gcc -Wall -Wextra -Werror
 

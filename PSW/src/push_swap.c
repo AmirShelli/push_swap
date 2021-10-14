@@ -19,16 +19,35 @@ void move(char *smaller,char *bigger, int index, t_stacks *stacks)
 			pick(smaller, stacks);
 	}
 }
-int average(t_stack stack)
-{
-	int size;
-	int sum;
 
-	size = stack.size;
-	sum = 0;
-	while(size--)
-		sum += stack.arr[size];
-	return(sum/stack.size);
+void calculate(t_stacks *stacks)
+{
+	int i;
+	int j;
+	int aux;
+	int sorted[stacks->a.size];
+
+	i = -1;
+	while(++i < stacks->a.size)
+		sorted[i] = stacks->a.arr[i];
+	i = 0;
+	while(i < stacks->a.size-1)
+	{
+		j = 0;
+		while (j < stacks->a.size - i - 1)
+		{
+			if(sorted[j] > sorted[j + 1])
+			{
+				aux = sorted[j + 1];
+				sorted[j + 1] = sorted[i];
+				sorted[i] = sorted[j + 1];
+			}
+			j++;
+		}
+		i++;
+	}	
+	stacks->middle = sorted[stacks->a.size];
+	stacks->smallest = sorted[0];
 }
 
 int fillable(t_stack stack, char **argv)
@@ -59,7 +78,7 @@ t_stacks *new_stacks(int size)
 	t_stacks *stacks = malloc(sizeof(t_stacks));
 	init_stack(&stacks->a, size, size);
     init_stack(&stacks->b, size, 0);
-	stacks->middle = average(stacks->a);
+	calculate(stacks);
 	return(stacks);
 }
 
@@ -69,9 +88,17 @@ int main(int argc, char *argv[])
 
 	t_stacks *stacks = new_stacks(argc);
 	// what about argc == 0 ? later.
-	if(!fillable(stacks->a, &argv[1]))
+	if(!fillable(stacks->a, &argv[1])) //refactor this bs, make is_valid and fill by itself ?
 		return(write(1, "Error", 5));
 	
+	/* after checking that everything is good
+	if(argc <= 3)
+		smolsort
+	else if (argc <= 5)
+		fivesort
+	else
+		ultimatesort
+	*/
 	/*** ^ T E S T ^ ***/
 	display_stack(stacks->a);
 	// printf("order is = %d\n", find_order(stacks));
