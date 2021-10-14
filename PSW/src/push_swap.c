@@ -19,12 +19,19 @@ void move(char *smaller,char *bigger, int index, t_stacks *stacks)
 			pick(smaller, stacks);
 	}
 }
+void swap_numbers(int *first, int *second)
+{
+	int aux;
+
+	aux = *first;
+	*first = *second;
+	*second = aux;
+}
 
 void calculate(t_stacks *stacks)
 {
 	int i;
 	int j;
-	int aux;
 	int sorted[stacks->a.size];
 
 	i = -1;
@@ -37,11 +44,7 @@ void calculate(t_stacks *stacks)
 		while (j < stacks->a.size - i - 1)
 		{
 			if(sorted[j] > sorted[j + 1])
-			{
-				aux = sorted[j + 1];
-				sorted[j + 1] = sorted[i];
-				sorted[i] = sorted[j + 1];
-			}
+				swap_numbers(&sorted[j], &sorted[j + 1])
 			j++;
 		}
 		i++;
