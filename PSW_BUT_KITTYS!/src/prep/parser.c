@@ -1,4 +1,4 @@
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 static void	swap_numbers(int *first, int *second)
 {
@@ -28,7 +28,7 @@ static void	sort(int *sorted, int size)
 	}
 }
 
-static void	calculate(t_push_swap *stacks)
+static void	set_values(t_push_swap *stacks)
 {
 	int		i;
 	t_stack	*a;
@@ -46,6 +46,8 @@ static void	calculate(t_push_swap *stacks)
 	stacks->smallest = sorted[0];
 }
 
+
+
 int	is_valid(t_push_swap *stacks, char **argv, int argc)
 {
 	while (argc-- > 0)
@@ -54,6 +56,6 @@ int	is_valid(t_push_swap *stacks, char **argv, int argc)
 			return (0);
 		stack_push_front(&stacks->a, new_stack(atoi(argv[argc])));
 	}
-	calculate(stacks);
+	set_values(stacks);
 	return (1);
 }

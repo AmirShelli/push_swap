@@ -1,20 +1,4 @@
-#include "../inc/push_swap.h"
-
-void	print_stack(t_stack *stack, char st) //todo remove
-{
-	printf("%c: ", st);
-	if (!stack)
-	{
-		printf("\n");
-		return ;
-	}
-	while (stack->next)
-	{
-		printf("{ %d }-", stack->num);
-		stack = stack->next;
-	}
-	printf("{ %d }\n", stack->num);
-}
+#include "../../inc/push_swap.h"
 
 t_stack	*new_stack(int num)
 {
@@ -47,12 +31,25 @@ t_stack	*stack_last_element(t_stack *stack)
 	return (stack);
 }
 
-t_stack	*get_value(t_stack *stack, int i)
+t_stack	*get_value(t_stack *stack, int index)
 {
 	int count;
 
 	count = 0;
-	while (count != i)
+	while (count != index)
 		stack = stack->next;
 	return (stack);
+}
+
+int get_index(t_stack *stack, int value)
+{
+	int index;
+
+	index = 0;
+	while(stack->num != value)
+	{
+		stack = stack->next;
+		index++;
+	}
+	return (index);
 }

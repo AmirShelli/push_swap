@@ -50,4 +50,6 @@ void		swap(t_stack **stack);
 void		rotate(t_stack **stack);
 void		reverse(t_stack **stack);
 
+void auto_move(char *smaller,char *bigger, int index, t_push_swap *stacks);
+
 #endif
