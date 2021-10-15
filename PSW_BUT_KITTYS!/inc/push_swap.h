@@ -40,7 +40,8 @@ int			get_min_max(t_stack *stack, int min_max);
 t_stack		*new_stack(int num);
 void		stack_push_front(t_stack **stack, t_stack *new_element);
 t_stack		*stack_last_element(t_stack *stack);
-t_stack		*get_value(t_stack *stack, int i);
+t_stack		*get_value(t_stack *stack, int index);
+int			get_index(t_stack *stack, int value);
 void		free_stack(t_stack *stack);
 
 void		pick(char *cmd, t_push_swap *stacks);
