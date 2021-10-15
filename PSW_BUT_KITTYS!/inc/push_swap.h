@@ -52,5 +52,8 @@ void		rotate(t_stack **stack);
 void		reverse(t_stack **stack);
 
 void auto_move(char *smaller,char *bigger, int index, t_push_swap *stacks);
+int	best_seq(t_stack *stack);
+int markup(t_stack *stack);
+void push_to_b(t_push_swap *stacks);
 
 #endif

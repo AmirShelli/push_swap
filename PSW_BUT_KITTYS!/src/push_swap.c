@@ -22,11 +22,21 @@ int	main(int argc, char *argv[])
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	if (is_sorted(stacks->a))
-	{
-		ultimate_free(stacks);
-		return (0);
-	}
-	else
-		solve(stacks);
+	// if (is_sorted(stacks->a))
+	// {
+	// 	ultimate_free(stacks);
+	// 	return (0);
+	// }
+	// else
+	// 	solve(stacks);
+
+	print_stack(stacks->a, 'a');
+	print_stack(stacks->b, 'b');
+	printf("- best sequence number: %d\n *** \n", best_seq(stacks->a));
+	printf("- sequence length: %d\n *** \n", markup(stacks->a));
+	push_to_b(stacks);
+	// print_stack(stacks->a, 'a');
+	// print_stack(stacks->b, 'b');
+	printf("- middle is: %d\n *** \n", stacks->middle);
+	
 }

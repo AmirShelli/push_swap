@@ -16,25 +16,30 @@ int	best_seq(t_stack *stack)
 	int seq;
 	int longest_seq;
 	int	seq_number;
+	int best;
 
 	seq = 0;
 	longest_seq = seq;
 	seq_number = stack->num;
-	while (stack->next)
+	while (stack)
 	{
-		if (stack->num < stack->next->num)
-			seq++;
+		if (stack->next && stack->num < stack->next->num)
+		{	
+			if(!seq++)
+				seq_number = stack->num;
+		}
 		else
 		{	
 			if (longest_seq < seq)
 			{	
+				best = seq_number;
 				longest_seq = seq;
-				seq_number = stack->num;
 			}
 			seq = 0;
 		}
+		stack = stack->next;
 	}
-	return (seq_number);
+	return (best);
 }
 
 int markup(t_stack *stack)
@@ -44,21 +49,25 @@ int markup(t_stack *stack)
 
 	amount = 1;
 	best = best_seq(stack);
-	while(stack->next)
+	while(stack)
 	{
 		if(stack->num == best)
 		{
 			while(stack->next && stack->num < stack->next->num)
-			{	
+			{
 				stack->keep = 1;
 				stack = stack->next;
 				amount++;
 			}
 			stack->keep = 1;
+			stack = stack->next;
+			
 		}
 		else
+		{
 			stack->keep = 0;
-		stack = stack->next;
+			stack = stack->next;
+		}
 	}
 	return (amount);
 }
@@ -69,18 +78,24 @@ void push_to_b(t_push_swap *stacks)
 	int seq_length;
 	
 	seq_length = markup(stacks->a);
-	size = stacks->size_a - seq_length;
+	size = stacks->size_a;
+	
 	while(size--)
 	{
-		if(stacks->a->num > stacks->middle && !stacks->a->keep)
-			pick("pb\n", stacks);
-		else if (stacks->a->keep)
+		print_stack(stacks->a, 'a');
+		print_stack(stacks->b, 'b');
+		if(stacks->a->num >= stacks->middle && !stacks->a->keep)
+				pick("pb\n", stacks);
+		else
 			pick("rra\n", stacks);
+		
 	}
 	size = stacks->size_a - seq_length;
 	while(size--)
 		if(stacks->a->num < stacks->middle && !stacks->a->keep)
 			pick("pb\n", stacks);
+		else if (stacks->a->keep)
+			pick("rra\n", stacks);
 }
 
 /*

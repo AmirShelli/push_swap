@@ -52,10 +52,11 @@ int	is_valid(t_push_swap *stacks, char **argv, int argc)
 {
 	while (argc-- > 0)
 	{
-		if (!ft_isnbr(argv[argc]) || !ft_isint(argv[argc]))
+		if (!ft_isnbr(argv[argc]))
 			return (0);
 		stack_push_front(&stacks->a, new_stack(atoi(argv[argc])));
 	}
 	set_values(stacks);
 	return (1);
+	// || !ft_isint(argv[argc] add later
 }
