@@ -48,12 +48,13 @@ int markup(t_stack *stack)
 	{
 		if(stack->num == best)
 		{
-			while(stack->num < stack->next->num && )
+			while(stack->next && stack->num < stack->next->num)
 			{	
 				stack->keep = 1;
 				stack = stack->next;
 				amount++;
 			}
+			stack->keep = 1;
 		}
 		else
 			stack->keep = 0;
