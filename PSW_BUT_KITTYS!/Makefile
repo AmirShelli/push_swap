@@ -7,22 +7,22 @@ CHECKER_SRCS =  bonus/checker.c src/init.c src/parser.c src/utils.c src/stack.c 
 OBJS = $(SRCS:.c=.o)
 CHECKER_OBJS = $(CHECKER_SRCS:.c=.o)
 
-INCLUDES = -I ./inc -I ./libft/main_libft
+INCLUDES = -I ./inc 
 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra
 
-LINK_LIBFT = -L./libft/main_libft -lft
+LINK_LIBFT = -L./libft -lft
 
 all : libft $(NAME)
 
 libft:
-	@$(MAKE) all -sC ./libft/main_libft
+	@$(MAKE) all -sC ./libft
 
 $(NAME): $(OBJS)
 	@$(CC) $(INCLUDES) $(OBJS) $(LINK_LIBFT) -o $(NAME)
 
-bonus: libft $(CHECKER_OBJS)
+bonus: $(CHECKER_OBJS)
 	@$(CC) $(INCLUDES) $(CHECKER_OBJS) $(LINK_LIBFT) -o $(CHECKER)
 
 %.o: %.c
@@ -34,7 +34,7 @@ clean :
 	@rm -rf $(wildcard ./*/*/*.o)
 
 fclean : clean
-	@$(MAKE) fclean -sC ./libft/main_libft
+	@$(MAKE) fclean -sC ./libft
 	@rm -rf $(NAME)
 	@rm -rf $(CHECKER)
 

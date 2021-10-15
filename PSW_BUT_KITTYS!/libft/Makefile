@@ -8,11 +8,11 @@ NAME = libft.a
 all: $(NAME)
 
 $(NAME): $(OBJS) $(HEADER)
-	@ar rcs $(NAME) $?
+	ar rcs $(NAME) $(OBJS)
 .c.o: $(BNS) $(SRCS)
-	@gcc $(FLAGS) -c $< -o $@
+	gcc $(FLAGS) -c $< -I $(HEADER) -o $@
 clean:
-	@rm -f $(OBJS) $(BNO)
+	rm -f $(OBJS) $(BNO)
 fclean: clean
-	@rm -f $(NAME)
+	rm -f $(NAME)
 re: fclean all 

@@ -1,11 +1,12 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "get_next_line.h"
+
 # include <stdlib.h>
 # include <stdio.h>
 # include <fcntl.h>
 # include <unistd.h>
-
 typedef struct s_list
 {
 	void			*content;
@@ -13,6 +14,7 @@ typedef struct s_list
 }					t_list;
 
 int		ft_isnbr(char *str);
+int		ft_isint(char *str);
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new_elem);
 t_list	*ft_lstlast(t_list *lst);
