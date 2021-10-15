@@ -19,45 +19,56 @@ void	push(t_stack **from, t_stack **to)
 
 void	swap(t_stack **stack)
 {
-	int	aux;
+	t_stack	*first;
+	t_stack	*second;
+	t_stack	*third;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	aux = (*stack)->num;
-	(*stack)->num = (*stack)->next->num;
-	(*stack)->next->num = aux;
+	first = (*stack)->next;
+	second = (*stack);
+	third = (*stack)->next->next;
+	first->next = second;
+	first->previous = NULL;
+	second->next = third;
+	second->previous = first;
+	if (third)
+		third->previous = second;
+	(*stack) = first;
 }
 
 void	rotate(t_stack **stack)
 {
-	t_stack	*aux;
-	int		first;
+	t_stack	*first;
+	t_stack *second;
+	t_stack	*last;
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	aux = (*stack);
-	first = (*stack)->num;
-	while (aux->next)
-	{
-		aux->num = aux->next->num;
-		aux = aux->next;
-	}
-	aux->num = first;
+	first = (*stack);
+	second = first->next;
+	last = stack_last_element(*stack);
+	first->next = NULL;
+	first->previous = last;
+	second->previous = NULL;
+	last->next = first;
+	(*stack) = second;
 }
 
 void	reverse(t_stack **stack)
 {
-	t_stack	*aux;
-	int		last;
+	t_stack *first;
+	t_stack *last;
+	t_stack *second_last;
 
 	if (!*stack || !(*stack)->next)
-		return ;
-	aux = stack_last_element(*stack);
-	last = aux->num;
-	while (aux->previous)
-	{
-		aux->num = aux->previous->num;
-		aux = aux->previous;
-	}
-	aux->num = last;
+		return;
+	first = (*stack);
+	last = stack_last_element(*stack);
+	second_last = last->previous;
+	first->previous = last;
+	last->next = first;
+	last->previous = NULL;
+	second_last->next = NULL;
+	(*stack) = last;
 }
