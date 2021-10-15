@@ -13,19 +13,12 @@ int	is_sorted(t_stack *stack)
 
 void auto_move(char *smaller,char *bigger, int index, t_push_swap *stacks)
 {
-	t_stack *stack;
 	int		size;
 
 	if (smaller[1] == 'a')
-	{	
-		stack = stacks->a;
 		size = stacks->size_a;
-	}
 	else
-	{	
-		stack = stacks->b;
 		size = stacks->size_b;
-	}	
 	if (index >= size/2)
 		while(index--)
 			pick(bigger, stacks);
