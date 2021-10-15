@@ -10,7 +10,7 @@ all: $(NAME)
 $(NAME): $(OBJS) $(HEADER)
 	ar rcs $(NAME) $(OBJS)
 .c.o: $(BNS) $(SRCS)
-	gcc $(FLAGS) -c $< -I $(HEADER) -o $@
+	gcc $(FLAGS) -c $< -o $@
 clean:
 	rm -f $(OBJS) $(BNO)
 fclean: clean
