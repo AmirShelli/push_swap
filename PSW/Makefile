@@ -1,4 +1,4 @@
-LIBFT = ./libft/main_libft/libft.a
+LIBFT = ./libft/libft.a
 
 NAME = push_swap
 
@@ -13,8 +13,8 @@ CC = gcc -Wall -Wextra -Werror
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) all -C ./libft/main_libft
-	$(CC) -o $(NAME) $(LIBFT) $(INCLUDES) $(OBJS)
+	$(MAKE) all -C ./libft
+	$(CC) $(LIBFT) $(INCLUDES) $(OBJS) -o $(NAME)
 
 clean :
 	rm -rf $(wildcard ./*.o)
@@ -22,7 +22,7 @@ clean :
 	rm -rf $(wildcard ./*/*/*.o)
 
 fclean : clean
-	$(MAKE) fclean -C ./libft/main_libft
+	$(MAKE) fclean -C ./libft
 	rm -rf $(NAME)
 
 re : fclean all

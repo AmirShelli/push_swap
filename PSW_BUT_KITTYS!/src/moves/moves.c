@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	push(t_stack **from, t_stack **to)
 {
@@ -6,15 +6,15 @@ void	push(t_stack **from, t_stack **to)
 
 	if (!*from)
 		return ;
-	new_first = (*from)->next; //1
-	(*from)->next = *to; // 4->next = 3
-	(*from)->previous = NULL; // 4->previous = NULL
-	*to = *from; // b: 3
+	new_first = (*from)->next;
+	(*from)->next = *to;
+	(*from)->previous = NULL;
+	*to = *from; 
 	if (*to && (*to)->next)
 		(*to)->next->previous = *from;
-	*from = new_first; //1
+	*from = new_first;
 	if (*from)
-		(*from)->previous = NULL; //1->previous = NULL
+		(*from)->previous = NULL;
 }
 
 void	swap(t_stack **stack)
@@ -52,7 +52,7 @@ void	reverse(t_stack **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	aux = stack_last(*stack);
+	aux = stack_last_element(*stack);
 	last = aux->num;
 	while (aux->previous)
 	{

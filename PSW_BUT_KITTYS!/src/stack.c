@@ -38,7 +38,7 @@ void	stack_push_front(t_stack **stack, t_stack *new)
 	*stack = new;
 }
 
-t_stack	*stack_last(t_stack *stack)
+t_stack	*stack_last_element(t_stack *stack)
 {
 	if (!stack)
 		return (0);
@@ -47,7 +47,7 @@ t_stack	*stack_last(t_stack *stack)
 	return (stack);
 }
 
-t_stack	*stack_index(t_stack *stack, int i)
+t_stack	*get_value(t_stack *stack, int i)
 {
 	int count;
 

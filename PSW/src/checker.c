@@ -30,22 +30,22 @@ int	is_sorted(t_stacks *stacks)
 
 /*** ^ T E S T ^ ***/
 
-int get_next_line(char **line)
-{
-	int rd;
-	int i;
-	char ch;
-	char *buffer;
+// int get_next_line(char **line)
+// {
+// 	int rd;
+// 	int i;
+// 	char ch;
+// 	char *buffer;
 	
-	rd = 0;
-	i = 0;
-	buffer = malloc(5);
-	*line = buffer;
-	while ((rd = read(0, &ch, 1)) > 0 && ch != '\n')
-		buffer[i++] = ch;
-	buffer[i] = '\0';
-	return(rd);
-}
+// 	rd = 0;
+// 	i = 0;
+// 	buffer = malloc(5);
+// 	*line = buffer;
+// 	while ((rd = read(0, &ch, 1)) > 0 && ch != '\n')
+// 		buffer[i++] = ch;
+// 	buffer[i] = '\0';
+// 	return(rd);
+// }
 
 // int main(int argc, char *argv[])
 // {
@@ -58,7 +58,7 @@ int get_next_line(char **line)
 // 		return(write(1, "Error\n", 6));
 // 	else
 // 	{
-// 		while (get_next_line(&line) > 0)
+// 		while (get_next_line(0, &line) > 0)
 // 		{
 // 			pick(line, stacks);
 // 			free(line);

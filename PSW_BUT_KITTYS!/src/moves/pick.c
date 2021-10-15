@@ -1,4 +1,4 @@
-#include "../inc/push_swap.h"
+#include "../../inc/push_swap.h"
 
 static void	run(t_push_swap *stacks, char *cmd, void (*func)(t_stack **))
 {
