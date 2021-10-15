@@ -19,14 +19,14 @@ void auto_move(char *smaller,char *bigger, int index, t_push_swap *stacks)
 		size = stacks->size_a;
 	else
 		size = stacks->size_b;
-	if (index >= size/2)
+	if (index <= size/2)
 		while(index--)
-			pick(bigger, stacks);
+			pick(smaller, stacks);
 	else
 	{
 		index = size - index;
 		while(index--)
-			pick(smaller, stacks);
+			pick(bigger, stacks);
 	}
 }
 
