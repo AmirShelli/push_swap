@@ -11,6 +11,32 @@ void	solve(t_push_swap *stacks)
  * pushes what's bigger than the mediane to b
  * then pushes the rest to b
  */
+int	best_seq(t_stack *stack)
+{
+	int seq;
+	int longest_seq;
+	int	seq_number;
+
+	seq = 0;
+	longest_seq = seq;
+	seq_number = stack->num;
+	while (stack->next)
+	{
+		if (stack->num < stack->next->num)
+			seq++;
+		else
+		{	
+			if (longest_seq < seq)
+			{	
+				longest_seq = seq;
+				seq_number = stack->num;
+			}
+			seq = 0;
+		}
+	}
+	return (seq_number);
+}
+
 int markup(t_stack *stack)
 {	
 	int	amount;
