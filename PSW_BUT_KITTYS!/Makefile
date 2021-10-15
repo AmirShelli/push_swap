@@ -36,6 +36,7 @@ clean :
 fclean : clean
 	@$(MAKE) fclean -sC ./libft/main_libft
 	@rm -rf $(NAME)
+	@rm -rf $(CHECKER)
 
 re : fclean all
 

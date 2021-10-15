@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 static void	swap_numbers(int *first, int *second)
 {
@@ -46,7 +46,7 @@ static void	calculate(t_push_swap *stacks)
 	stacks->smallest = sorted[0];
 }
 
-int	parse_and_validate(t_push_swap *stacks, char **argv, int argc)
+int	is_valid(t_push_swap *stacks, char **argv, int argc)
 {
 	while (argc-- > 0)
 	{

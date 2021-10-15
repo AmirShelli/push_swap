@@ -1,6 +1,6 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
-int	check_sorted(t_stack *stack)
+int	is_sorted(t_stack *stack)
 {
 	while (stack->next)
 	{
@@ -11,6 +11,18 @@ int	check_sorted(t_stack *stack)
 	return (1);
 }
 
+void	free_stack(t_stack *stack)
+{
+	t_stack	*aux;
+
+	while (stack)
+	{
+		aux = stack;
+		stack = stack->next;
+		free(aux);
+	}
+}
+
 void	ultimate_free(t_push_swap *stacks)
 {
 	free_stack(stacks->a);
@@ -18,20 +30,20 @@ void	ultimate_free(t_push_swap *stacks)
 	free(stacks);
 }
 
-int	get_min_max(t_stack *stack, int min_max)
-{
-	int		comp;
+// int	get_min_max(t_stack *stack, int min_max)
+// {
+// 	int		comp;
 
-	if (!min_max)
-		comp = INT_MAX;
-	else
-		comp = INT_MIN;
-	while (stack)
-	{
-		if ((!min_max && stack->num <= comp) || (min_max && stack->num >= comp))
-			comp = stack->num;
-		stack = stack->next;
-	}
-	return (comp);
-}
+// 	if (!min_max)
+// 		comp = INT_MAX;
+// 	else
+// 		comp = INT_MIN;
+// 	while (stack)
+// 	{
+// 		if ((!min_max && stack->num <= comp) || (min_max && stack->num >= comp))
+// 			comp = stack->num;
+// 		stack = stack->next;
+// 	}
+// 	return (comp);
+// }
 

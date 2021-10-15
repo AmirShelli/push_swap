@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 int	main(int argc, char *argv[])
 {
@@ -7,13 +7,13 @@ int	main(int argc, char *argv[])
 	if (argc == 1)
 		return (1);
 	stacks = init(--argc);
-	if (!parse_and_validate(stacks, ++argv, argc))
+	if (!is_valid(stacks, ++argv, argc))
 	{
 		ultimate_free(stacks);
 		write(1, "Error\n", 6);
 		return (1);
 	}
-	if (check_sorted(stacks->a))
+	if (is_sorted(stacks->a))
 	{
 		ultimate_free(stacks);
 		return (0);

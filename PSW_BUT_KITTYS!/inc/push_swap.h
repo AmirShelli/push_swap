@@ -1,9 +1,10 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include <libft.h>
+# include "../libft/main_libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
+# include <limits.h>
 
 # include <stdio.h> //todo remove
 
@@ -28,11 +29,11 @@ typedef struct s_push_swap
 void		print_stack(t_stack *stack, char st);
 
 t_push_swap	*init(int size);
-int			parse_and_validate(t_push_swap *stacks, char **argv, int argc);
+int			is_valid(t_push_swap *stacks, char **argv, int argc);
 
 void		solve(t_push_swap *stacks);
 
-int			check_sorted(t_stack *stack);
+int			is_sorted(t_stack *stack);
 void		ultimate_free(t_push_swap *stacks);
 int			get_min_max(t_stack *stack, int min_max);
 

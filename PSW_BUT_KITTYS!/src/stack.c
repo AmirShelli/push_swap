@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../inc/push_swap.h"
 
 void	print_stack(t_stack *stack, char st) //todo remove
 {
@@ -55,16 +55,4 @@ t_stack	*stack_index(t_stack *stack, int i)
 	while (count != i)
 		stack = stack->next;
 	return (stack);
-}
-
-void	free_stack(t_stack *stack)
-{
-	t_stack	*aux;
-
-	while (stack)
-	{
-		aux = stack;
-		stack = stack->next;
-		free(aux);
-	}
 }
