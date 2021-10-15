@@ -36,7 +36,7 @@ t_stack	*get_value(t_stack *stack, int index)
 	int count;
 
 	count = 0;
-	while (count != index)
+	while (count++ != index)
 		stack = stack->next;
 	return (stack);
 }

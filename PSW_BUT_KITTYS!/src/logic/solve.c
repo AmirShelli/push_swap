@@ -40,15 +40,20 @@ int	best_seq(t_stack *stack)
 int markup(t_stack *stack)
 {	
 	int	amount;
+	int best;
 
 	amount = 1;
+	best = best_seq(stack);
 	while(stack->next)
 	{
-		if(stack->num < stack->next->num)
-		{	
-			stack->keep = 1;
-			stack->next->keep = 1;
-			amount++;
+		if(stack->num == best)
+		{
+			while(stack->num < stack->next->num && )
+			{	
+				stack->keep = 1;
+				stack = stack->next;
+				amount++;
+			}
 		}
 		else
 			stack->keep = 0;
@@ -81,11 +86,13 @@ void push_to_b(t_push_swap *stacks)
  * finds the optimal number to push to a first
  * does the magic to push it back to a
  */
-int index_a(t_push_swap *stacks, int num)
+int index_a(t_push_swap *stacks, int index_b)
 {
 	int index;
+	int num;
 
 	index = 0;
+	num = get_value(stacks->b, index_b)->num;
 	while (index < stacks->size_a - 1 && num > get_value(stacks->a, index)->num)
 		index++;
 	return (index);
