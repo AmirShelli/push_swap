@@ -47,6 +47,6 @@ int	main(int argc, char *argv[])
 	moves(stacks->size_b, index_b) + 
 	moves(stacks->size_a, index));
 	printf("- best index: %d\n *** \n", best_index(stacks));
-	push_to_a(stacks);
-	
+	push_to_a(stacks); //index_a() is returning the wrong value
+	//duplicates and is_int needed to finish (any error handling in general in is_valid)
 }
