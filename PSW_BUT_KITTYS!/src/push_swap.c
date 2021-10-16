@@ -58,4 +58,5 @@ int	main(int argc, char *argv[])
 	//duplicates and is_int needed to finish (any error handling in general in is_valid)
 	//isnbr has to check for negative numbers
 	//in solve has to include smolsort and fivesort (I have them in the old ver)
+	//checker! we changed cmd[2] == 'r'
 }
