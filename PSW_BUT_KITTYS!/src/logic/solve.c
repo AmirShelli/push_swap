@@ -132,6 +132,8 @@ int index_a(t_push_swap *stacks, int index_b)
 	{
 		if(value > get_value(stacks->a, index)->num)
 		{
+			if(!flag)
+				sup_val = get_value(stacks->a, index)->num;
 			flag = 1;
 			if(sup_val < get_value(stacks->a, index)->num)
 				sup_val = get_value(stacks->a, index)->num;

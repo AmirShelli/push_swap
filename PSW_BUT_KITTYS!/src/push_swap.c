@@ -39,15 +39,17 @@ int	main(int argc, char *argv[])
 	print_stack(stacks->a, 'a');
 	print_stack(stacks->b, 'b');
 	printf("- middle is: %d\n *** \n", stacks->middle);
-	index_b = 0;
+	index_b = 1;
 	index = index_a(stacks, index_b);
-	printf("- index_a: %d\n *** \n", index);
+	printf("- index_a when index_b is %d: %d\n *** \n",index_b, index);
 	printf("- moves for index_b: %d\n *** \n", moves(stacks->size_b, index_b));
 	printf("- moves in both stacks: %d\n *** \n", 
 	moves(stacks->size_b, index_b) + 
 	moves(stacks->size_a, index));
 	printf("- best index: %d\n *** \n", best_index(stacks));
-	push_to_a(stacks); //index_a() is returning the wrong value
+	push_to_a(stacks);
+	print_stack(stacks->a, 'a');
+	print_stack(stacks->b, 'b'); //index_a() is returning the wrong value
 	//final move function needed
 	
 	//duplicates and is_int needed to finish (any error handling in general in is_valid)
