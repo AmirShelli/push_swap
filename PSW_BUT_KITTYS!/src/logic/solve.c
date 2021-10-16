@@ -181,11 +181,15 @@ int best_index(t_push_swap *stacks)
 void push_to_a(t_push_swap *stacks)
 {
 	int		index[2];
+	int		aux[2];
 
 	while (stacks->size_b)
 	{
+		// print_stack(stacks->a, 'a');
+		// print_stack(stacks->b, 'b');
 		index[0] = index_a(stacks, best_index(stacks));
 		index[1] = best_index(stacks);
+		// printf("a: [%d] b: [%d]\n", index[0], index[1]);
 		if (index[0] <= stacks->size_a/2 && index[1] <= stacks->size_b/2)
 			while(index[0] && index[1])
 			{	
@@ -195,11 +199,19 @@ void push_to_a(t_push_swap *stacks)
 			}
 		else if (index[0] > stacks->size_a/2 && index[1] > stacks->size_b/2)
 		{
-			while(stacks->size_a - index[0] && stacks->size_b - index[1])
+			aux[0] = stacks->size_a - index[0];
+			aux[1] = stacks->size_b - index[1];
+			while(aux[0] && aux[1])
 			{	
 				pick("rrr", stacks);
-				index[0]--;
-				index[1]--;
+				--aux[0];
+				index[0]++;
+				if (index[0] == stacks->size_a)
+					index[0] = 0;
+				--aux[1];
+				index[1]++;
+				if (index[1] == stacks->size_b)
+					index[1] = 0;
 			}
 		}
 		if(index[0])

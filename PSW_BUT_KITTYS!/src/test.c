@@ -2,6 +2,7 @@
 
 void	print_stack(t_stack *stack, char st) //todo remove
 {
+	int index = 0;
 	printf("%c: ", st);
 	if (!stack)
 	{
@@ -10,10 +11,11 @@ void	print_stack(t_stack *stack, char st) //todo remove
 	}
 	while (stack->next)
 	{
-		printf("|{ %d }| ", stack->num);
+		printf("[%d]{ %d }| ", index, stack->num);
 		stack = stack->next;
+		index++;
 	}
-	printf("|{ %d }|\n", stack->num);
+	printf("[%d]{ %d }|\n", index, stack->num);
 }
 
 int	get_min_max(t_stack *stack, int min_max)
