@@ -43,7 +43,7 @@ static void	set_values(t_push_swap *stacks)
 	}
 	sort(sorted, stacks->size_a);
 	stacks->middle = sorted[stacks->size_a / 2];
-	stacks->smallest = sorted[0];
+	stacks->smallest= sorted[0];
 }
 
 

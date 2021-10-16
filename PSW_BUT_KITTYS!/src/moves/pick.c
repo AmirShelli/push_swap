@@ -17,9 +17,9 @@ void	pick(char *cmd, t_push_swap *stacks)
 {
 	if (cmd[0] == 's')
 		run(stacks, cmd, &swap);
-	else if (cmd[0] == 'r' && cmd[1] != 'r')
+	else if (cmd[0] == 'r' && !cmd[2])
 		run(stacks, cmd, &rotate);
-	else if (cmd[0] == 'r' && cmd[1] == 'r')
+	else if (cmd[0] == 'r' && cmd[2])
 		run(stacks, &cmd[1], &reverse);
 	else if (cmd[0] == 'p')
 	{	

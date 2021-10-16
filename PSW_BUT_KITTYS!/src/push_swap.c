@@ -29,8 +29,7 @@ int	main(int argc, char *argv[])
 	// }
 	// else
 	// 	solve(stacks);
-	int index_b;
-	int index;
+	
 	print_stack(stacks->a, 'a');
 	print_stack(stacks->b, 'b');
 	printf("- best sequence number: %d\n *** \n", best_seq(stacks->a));
@@ -39,8 +38,8 @@ int	main(int argc, char *argv[])
 	print_stack(stacks->a, 'a');
 	print_stack(stacks->b, 'b');
 	printf("- middle is: %d\n *** \n", stacks->middle);
-	index_b = 1;
-	index = index_a(stacks, index_b);
+	int index_b = 1;
+	int index = index_a(stacks, index_b);
 	printf("- index_a when index_b is %d: %d\n *** \n",index_b, index);
 	printf("- moves for index_b: %d\n *** \n", moves(stacks->size_b, index_b));
 	printf("- moves in both stacks: %d\n *** \n", 
@@ -50,8 +49,11 @@ int	main(int argc, char *argv[])
 	push_to_a(stacks);
 	print_stack(stacks->a, 'a');
 	print_stack(stacks->b, 'b');
-	auto_move("ra", "rra", get_index(stacks, stacks->smallest), stacks);
+	auto_move("ra", "rra", get_index(stacks->a, stacks->smallest), stacks);
 	print_stack(stacks->a, 'a');
-	print_stack(stacks->b, 'b');
+	if(is_sorted(stacks->a))
+		puts("congrats, it's sorted!\n");
+	else
+		puts("F");
 	//duplicates and is_int needed to finish (any error handling in general in is_valid)
 }

@@ -76,10 +76,12 @@ int markup(t_stack *stack)
 void push_to_b(t_push_swap *stacks)
 {
 	int size;
+	int aux;
 	char *bigger;
 	char *smaller;
 
-	if(markup(stacks->a) > stacks->size_a/2)
+	size = markup(stacks->a);
+	if(size > stacks->size_a/2)
 	{
 		bigger = "rra";
 		smaller = "ra"; 
@@ -89,8 +91,8 @@ void push_to_b(t_push_swap *stacks)
 		bigger = "ra";
 		smaller = "rra";
 	}
-	size = stacks->size_a;
-	while(size--)
+	aux = stacks->size_a;
+	while(aux--)
 	{
 		if(stacks->a->num >= stacks->middle && !stacks->a->keep)
 			pick("pb", stacks);
@@ -99,9 +101,8 @@ void push_to_b(t_push_swap *stacks)
 			if(!is_sorted(stacks->a))
 				pick(bigger, stacks);
 		}
-	}
-	size = stacks->size_a;
-	while(size--)
+	} 
+	while(stacks->size_a - size)
 	{	
 		if(!stacks->a->keep)
 			pick("pb", stacks);
@@ -183,12 +184,9 @@ void push_to_a(t_push_swap *stacks)
 
 	while (stacks->size_b)
 	{
-		print_stack(stacks->a, 'a');
-		print_stack(stacks->b, 'b');
 		index[0] = index_a(stacks, best_index(stacks));
 		index[1] = best_index(stacks);
-		printf("a: [%d] - b: [%d] \n", index[0], index[1]);
-		if (index[0] <= stacks->size_b/2 && index[1] <= stacks->size_b/2)
+		if (index[0] <= stacks->size_a/2 && index[1] <= stacks->size_b/2)
 			while(index[0] && index[1])
 			{	
 				pick("rr", stacks);
@@ -197,9 +195,7 @@ void push_to_a(t_push_swap *stacks)
 			}
 		else if (index[0] > stacks->size_a/2 && index[1] > stacks->size_b/2)
 		{
-			index[0] = stacks->size_a - index[0];
-			index[1] = stacks->size_b - index[1];
-			while(index[0] && index[1])
+			while(stacks->size_a - index[0] && stacks->size_b - index[1])
 			{	
 				pick("rrr", stacks);
 				index[0]--;
@@ -212,16 +208,4 @@ void push_to_a(t_push_swap *stacks)
 			auto_move("rb", "rrb", index[1], stacks);
 		pick("pa", stacks);
 	}
-}
-
-/*
- * final move
- */
-void final_move(t_push_swap *stacks)
-{
-	int index;
-
-	index = get_index(stacks->a, stacks->smallest);
-	if(index < stacks->size_a/2)
-		
 }
