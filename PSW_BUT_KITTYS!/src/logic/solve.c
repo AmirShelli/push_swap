@@ -119,20 +119,29 @@ void push_to_b(t_push_swap *stacks)
  */
 int index_a(t_push_swap *stacks, int index_b)
 {
+	int value;
+	int sup_val;
 	int index;
-	int num;
-	int biggest_i;
+	int flag;
 
+	value = get_value(stacks->b, index_b)->num; //put outside of func
+	flag = 0;
+	sup_val = get_value(stacks->a, 0)->num;
 	index = 0;
-	biggest_i = 0;
-	num = get_value(stacks->b, index_b)->num;
-	while (index < stacks->size_a && num > get_value(stacks->a, index)->num)
-	{	
-		if(num > get_value(stacks->a, index)->num && get_value(stacks->a, index)->num > get_value(stacks->a, biggest_i)->num)
-			biggest_i = index;
+	while(index < stacks->size_a)
+	{
+		if(value > get_value(stacks->a, index)->num)
+		{
+			flag = 1;
+			if(sup_val < get_value(stacks->a, index)->num)
+				sup_val = get_value(stacks->a, index)->num;
+		}
+		if(!flag)
+			if(sup_val > get_value(stacks->a, index)->num)
+				sup_val = get_value(stacks->a, index)->num;
 		index++;
 	}
-	return (++biggest_i);
+	return (get_index(stacks->a,sup_val) + flag);
 }
 
 int moves(int size, int index)
@@ -176,7 +185,7 @@ void push_to_a(t_push_swap *stacks)
 		print_stack(stacks->b, 'b');
 		index[0] = index_a(stacks, best_index(stacks));
 		index[1] = best_index(stacks);
-		
+		printf("a: [%d] - b: [%d] \n", index[0], index[1]);
 		if (index[0] <= stacks->size_b/2 && index[1] <= stacks->size_b/2)
 			while(index[0] && index[1])
 			{	
@@ -195,7 +204,6 @@ void push_to_a(t_push_swap *stacks)
 				index[1]--;
 			}
 		}
-		printf("a: [%d] - b: [%d] \n", index[0], index[1]);
 		if(index[0])
 			auto_move("ra", "rra", index[0], stacks);
 		if(index[1])

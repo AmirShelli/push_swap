@@ -39,7 +39,7 @@ int	main(int argc, char *argv[])
 	print_stack(stacks->a, 'a');
 	print_stack(stacks->b, 'b');
 	printf("- middle is: %d\n *** \n", stacks->middle);
-	index_b = 1;
+	index_b = 0;
 	index = index_a(stacks, index_b);
 	printf("- index_a: %d\n *** \n", index);
 	printf("- moves for index_b: %d\n *** \n", moves(stacks->size_b, index_b));
