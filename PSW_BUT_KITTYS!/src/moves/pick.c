@@ -22,7 +22,7 @@ void	pick(char *cmd, t_push_swap *stacks)
 	else if (cmd[0] == 'r' && cmd[2])
 		run(stacks, &cmd[1], &reverse);
 	else if (cmd[0] == 'p')
-	{	
+	{
 		if (cmd[1] == 'b')
 		{
 			push(&stacks->a, &stacks->b);

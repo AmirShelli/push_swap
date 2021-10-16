@@ -2,7 +2,7 @@ NAME = push_swap
 CHECKER = checker
 
 SRCS =  $(shell find src -type f -name "*.c")
-CHECKER_SRCS =  bonus/checker.c src/init.c src/parser.c src/utils.c src/stack.c src/moves/pick.c src/moves/moves.c
+CHECKER_SRCS =  bonus/checker.c src/prep/utils.c src/prep/parser.c src/prep/stack.c src/moves/pick.c src/moves/moves.c
 
 OBJS = $(SRCS:.c=.o)
 CHECKER_OBJS = $(CHECKER_SRCS:.c=.o)

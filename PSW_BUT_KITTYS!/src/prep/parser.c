@@ -2,7 +2,7 @@
 
 static void	swap_numbers(int *first, int *second)
 {
-	int aux;
+	int	aux;
 
 	aux = *first;
 	*first = *second;
@@ -15,7 +15,7 @@ static void	sort(int *sorted, int size)
 	int	j;
 
 	i = 0;
-	while(i < size - 1)
+	while (i < size - 1)
 	{
 		j = 0;
 		while (j < size - i - 1)
@@ -43,20 +43,43 @@ static void	set_values(t_push_swap *stacks)
 	}
 	sort(sorted, stacks->size_a);
 	stacks->middle = sorted[stacks->size_a / 2];
-	stacks->smallest= sorted[0];
+	stacks->smallest = sorted[0];
 }
 
 
+int	duplicates(t_stack *stack)
+{
+	t_stack	*aux;
+
+	while (stack->next)
+	{
+		aux = stack->next;
+		while (aux)
+		{
+			if (stack->num == aux->num)
+				return (1);
+			aux = aux->next;
+		}
+		stack = stack->next;
+	}
+	return (0);
+}
 
 int	is_valid(t_push_swap *stacks, char **argv, int argc)
 {
+	t_stack	*aux;
+
 	while (argc-- > 0)
 	{
-		if (!ft_isnbr(argv[argc]))
+		if (!ft_isnbr(argv[argc]) || !ft_isint(argv[argc]))
 			return (0);
-		stack_push_front(&stacks->a, new_stack(atoi(argv[argc])));
+		aux = new_stack(atoi(argv[argc]));
+		if (!aux)
+			return (0);
+		stack_push_front(&stacks->a, aux);
 	}
+	if (duplicates(stacks->a))
+		return (0);
 	set_values(stacks);
 	return (1);
-	// || !ft_isint(argv[argc] add later
 }

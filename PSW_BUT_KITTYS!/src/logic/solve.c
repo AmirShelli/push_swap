@@ -1,10 +1,17 @@
 #include "../../inc/push_swap.h"
-#include <stdio.h>
 
 void	solve(t_push_swap *stacks)
 {
-	(void)stacks;
-	auto_move("ra\n", "rra\n",get_index(stacks->a, stacks->smallest), stacks);
+	if (stacks->size_a <= 3)
+		smallsort(stacks, stacks->size_a);
+	else if (stacks->size_a <= 5)
+		fivesort(stacks);
+	else
+	{
+		push_to_b(stacks);
+		push_to_a(stacks);
+		auto_move("ra", "rra", get_index(stacks->a, stacks->smallest), stacks);
+	}
 }
 
 /*
@@ -14,10 +21,10 @@ void	solve(t_push_swap *stacks)
  */
 int	best_seq(t_stack *stack)
 {
-	int seq;
-	int longest_seq;
+	int	seq;
+	int	longest_seq;
 	int	seq_number;
-	int best;
+	int	best;
 
 	seq = 0;
 	longest_seq = seq;
@@ -25,14 +32,14 @@ int	best_seq(t_stack *stack)
 	while (stack)
 	{
 		if (stack->next && stack->num < stack->next->num)
-		{	
-			if(!seq++)
+		{
+			if (!seq++)
 				seq_number = stack->num;
 		}
 		else
-		{	
+		{
 			if (longest_seq < seq)
-			{	
+			{
 				best = seq_number;
 				longest_seq = seq;
 			}
@@ -43,18 +50,18 @@ int	best_seq(t_stack *stack)
 	return (best);
 }
 
-int markup(t_stack *stack)
-{	
+int	markup(t_stack *stack)
+{
 	int	amount;
-	int best;
+	int	best;
 
 	amount = 1;
 	best = best_seq(stack);
-	while(stack)
+	while (stack)
 	{
-		if(stack->num == best)
+		if (stack->num == best)
 		{
-			while(stack->next && stack->num < stack->next->num)
+			while (stack->next && stack->num < stack->next->num)
 			{
 				stack->keep = 1;
 				stack = stack->next;
@@ -62,7 +69,6 @@ int markup(t_stack *stack)
 			}
 			stack->keep = 1;
 			stack = stack->next;
-			
 		}
 		else
 		{
@@ -73,44 +79,40 @@ int markup(t_stack *stack)
 	return (amount);
 }
 
-void push_to_b(t_push_swap *stacks)
+void	push_to_b(t_push_swap *stacks)
 {
-	int size;
-	int aux;
-	char *bigger;
-	char *smaller;
+	int		size;
+	int		aux;
+	char	*bigger;
+	char	*smaller;
 
 	size = markup(stacks->a);
-	if(size > stacks->size_a/2)
+	if (size > stacks->size_a / 2)
 	{
 		bigger = "rra";
-		smaller = "ra"; 
+		smaller = "ra";
 	}
-	else 
+	else
 	{
 		bigger = "ra";
 		smaller = "rra";
 	}
 	aux = stacks->size_a;
-	while(aux--)
+	while (aux--)
 	{
-		if(stacks->a->num >= stacks->middle && !stacks->a->keep)
+		if (stacks->a->num >= stacks->middle && !stacks->a->keep)
 			pick("pb", stacks);
 		else
-		{	
-			if(!is_sorted(stacks->a))
+			if (!is_sorted(stacks->a))
 				pick(bigger, stacks);
-		}
-	} 
-	while(stacks->size_a - size)
-	{	
-		if(!stacks->a->keep)
+	}
+	while (stacks->size_a - size)
+	{
+		if (!stacks->a->keep)
 			pick("pb", stacks);
 		else
-		{	
-			if(!is_sorted(stacks->a))
+			if (!is_sorted(stacks->a))
 				pick(smaller, stacks);
-		}
 	}
 }
 
@@ -118,58 +120,60 @@ void push_to_b(t_push_swap *stacks)
  * finds the optimal number to push to a first
  * does the magic to push it back to a
  */
-int index_a(t_push_swap *stacks, int index_b)
+int	index_a(t_push_swap *stacks, int index_b)
 {
-	int value;
-	int sup_val;
-	int index;
-	int flag;
+	int	value;
+	int	sup_val;
+	int	index;
+	int	flag;
 
-	value = get_value(stacks->b, index_b)->num; //put outside of func
+	value = get_value(stacks->b, index_b)->num;
 	flag = 0;
 	sup_val = get_value(stacks->a, 0)->num;
 	index = 0;
-	while(index < stacks->size_a)
+	while (index < stacks->size_a)
 	{
-		if(value > get_value(stacks->a, index)->num)
+		if (value > get_value(stacks->a, index)->num)
 		{
-			if(!flag)
+			if (!flag)
 				sup_val = get_value(stacks->a, index)->num;
 			flag = 1;
-			if(sup_val < get_value(stacks->a, index)->num)
+			if (sup_val < get_value(stacks->a, index)->num)
 				sup_val = get_value(stacks->a, index)->num;
 		}
-		if(!flag)
-			if(sup_val > get_value(stacks->a, index)->num)
+		if (!flag)
+			if (sup_val > get_value(stacks->a, index)->num)
 				sup_val = get_value(stacks->a, index)->num;
 		index++;
 	}
-	return (get_index(stacks->a,sup_val) + flag);
+	return (get_index(stacks->a, sup_val) + flag);
 }
 
-int moves(int size, int index)
+int	moves(int size, int index)
 {
-		if(index <= size/2)
-			return(index);
-		else
-			return ((size - index));
+	if (index <= size / 2)
+		return (index);
+	else
+		return (size - index);
 }
 
-int best_index(t_push_swap *stacks)
+int	best_index(t_push_swap *stacks)
 {
-	int index_b;
-	int num_moves;
-	int best_moves;
-	int best_index;
+	int	index_b;
+	int	num_moves;
+	int	best_moves;
+	int	best_index;
 
 	index_b = 0;
 	best_index = index_b;
-	best_moves = moves(stacks->size_b, index_b) + moves(stacks->size_a, index_a(stacks, index_b));
+	best_moves = moves(stacks->size_b, index_b)
+		+ moves(stacks->size_a, index_a(stacks, index_b));
 	while (index_b < stacks->size_b)
 	{
-		num_moves = moves(stacks->size_b, index_b) + moves(stacks->size_a, index_a(stacks, index_b));
-		if(best_moves >= num_moves)
-		{	
+		num_moves = moves(stacks->size_b, index_b)
+			+ moves(stacks->size_a, index_a(stacks, index_b));
+		if (best_moves >= num_moves)
+		{
 			best_moves = num_moves;
 			best_index = index_b;
 		}
@@ -178,30 +182,29 @@ int best_index(t_push_swap *stacks)
 	return (best_index);
 }
 
-void push_to_a(t_push_swap *stacks)
+void	push_to_a(t_push_swap *stacks)
 {
 	int		index[2];
 	int		aux[2];
 
 	while (stacks->size_b)
 	{
-		// print_stack(stacks->a, 'a');
-		// print_stack(stacks->b, 'b');
 		index[0] = index_a(stacks, best_index(stacks));
 		index[1] = best_index(stacks);
-		// printf("a: [%d] b: [%d]\n", index[0], index[1]);
-		if (index[0] <= stacks->size_a/2 && index[1] <= stacks->size_b/2)
-			while(index[0] && index[1])
-			{	
+		if (index[0] <= stacks->size_a / 2 && index[1] <= stacks->size_b / 2)
+		{
+			while (index[0] && index[1])
+			{
 				pick("rr", stacks);
 				index[0]--;
 				index[1]--;
 			}
-		else if (index[0] > stacks->size_a/2 && index[1] > stacks->size_b/2)
+		}
+		else if (index[0] > stacks->size_a / 2 && index[1] > stacks->size_b / 2)
 		{
 			aux[0] = stacks->size_a - index[0];
 			aux[1] = stacks->size_b - index[1];
-			while(aux[0] && aux[1])
+			while (aux[0] && aux[1])
 			{	
 				pick("rrr", stacks);
 				--aux[0];
@@ -214,9 +217,9 @@ void push_to_a(t_push_swap *stacks)
 					index[1] = 0;
 			}
 		}
-		if(index[0])
+		if (index[0])
 			auto_move("ra", "rra", index[0], stacks);
-		if(index[1])
+		if (index[1])
 			auto_move("rb", "rrb", index[1], stacks);
 		pick("pa", stacks);
 	}

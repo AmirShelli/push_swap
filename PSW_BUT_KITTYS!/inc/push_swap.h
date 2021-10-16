@@ -4,9 +4,6 @@
 # include "../libft/libft.h"
 # include <unistd.h>
 # include <stdlib.h>
-# include <limits.h>
-
-# include <stdio.h> //todo remove
 
 typedef struct s_stack
 {
@@ -20,13 +17,11 @@ typedef struct s_push_swap
 {
 	t_stack	*a;
 	t_stack	*b;
-	int	size_a;
-	int	size_b;
+	int		size_a;
+	int		size_b;
 	int		middle;
 	int		smallest;
 }	t_push_swap;
-
-void		print_stack(t_stack *stack, char st);
 
 t_push_swap	*init(int size);
 int			is_valid(t_push_swap *stacks, char **argv, int argc);
@@ -35,7 +30,6 @@ void		solve(t_push_swap *stacks);
 
 int			is_sorted(t_stack *stack);
 void		ultimate_free(t_push_swap *stacks);
-int			get_min_max(t_stack *stack, int min_max);
 
 t_stack		*new_stack(int num);
 void		stack_push_front(t_stack **stack, t_stack *new_element);
@@ -51,13 +45,17 @@ void		swap(t_stack **stack);
 void		rotate(t_stack **stack);
 void		reverse(t_stack **stack);
 
-void auto_move(char *smaller,char *bigger, int index, t_push_swap *stacks);
-int	best_seq(t_stack *stack);
-int markup(t_stack *stack);
-void push_to_b(t_push_swap *stacks);
-int index_a(t_push_swap *stacks, int index_b);
-int moves(int size, int index);
-int best_index(t_push_swap *stacks);
-void push_to_a(t_push_swap *stacks);
+void		smallsort(t_push_swap *stacks, int size);
+void		fivesort(t_push_swap *stacks);
+
+void		auto_move(char *smaller, char *bigger, int index,
+				t_push_swap *stacks);
+int			best_seq(t_stack *stack);
+int			markup(t_stack *stack);
+void		push_to_b(t_push_swap *stacks);
+int			index_a(t_push_swap *stacks, int index_b);
+int			moves(int size, int index);
+int			best_index(t_push_swap *stacks);
+void		push_to_a(t_push_swap *stacks);
 
 #endif

@@ -9,7 +9,7 @@ void	push(t_stack **from, t_stack **to)
 	new_first = (*from)->next;
 	(*from)->next = *to;
 	(*from)->previous = NULL;
-	*to = *from; 
+	*to = *from;
 	if (*to && (*to)->next)
 		(*to)->next->previous = *from;
 	*from = new_first;
@@ -40,7 +40,7 @@ void	swap(t_stack **stack)
 void	rotate(t_stack **stack)
 {
 	t_stack	*first;
-	t_stack *second;
+	t_stack	*second;
 	t_stack	*last;
 
 	if (!*stack || !(*stack)->next)
@@ -57,12 +57,12 @@ void	rotate(t_stack **stack)
 
 void	reverse(t_stack **stack)
 {
-	t_stack *first;
-	t_stack *last;
-	t_stack *second_last;
+	t_stack	*first;
+	t_stack	*last;
+	t_stack	*second_last;
 
 	if (!*stack || !(*stack)->next)
-		return;
+		return ;
 	first = (*stack);
 	last = stack_last_element(*stack);
 	second_last = last->previous;

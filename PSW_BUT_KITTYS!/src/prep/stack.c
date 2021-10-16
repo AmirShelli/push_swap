@@ -5,6 +5,8 @@ t_stack	*new_stack(int num)
 	t_stack	*stack;
 
 	stack = malloc(sizeof(t_stack));
+	if (!stack)
+		return (NULL);
 	stack->num = num;
 	stack->next = NULL;
 	stack->previous = NULL;
@@ -33,7 +35,7 @@ t_stack	*stack_last_element(t_stack *stack)
 
 t_stack	*get_value(t_stack *stack, int index)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (count++ != index)
@@ -41,12 +43,12 @@ t_stack	*get_value(t_stack *stack, int index)
 	return (stack);
 }
 
-int get_index(t_stack *stack, int value)
+int	get_index(t_stack *stack, int value)
 {
-	int index;
+	int	index;
 
 	index = 0;
-	while(stack->num != value)
+	while (stack->num != value)
 	{
 		stack = stack->next;
 		index++;
