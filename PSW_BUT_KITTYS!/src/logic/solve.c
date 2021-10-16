@@ -213,3 +213,15 @@ void push_to_a(t_push_swap *stacks)
 		pick("pa", stacks);
 	}
 }
+
+/*
+ * final move
+ */
+void final_move(t_push_swap *stacks)
+{
+	int index;
+
+	index = get_index(stacks->a, stacks->smallest);
+	if(index < stacks->size_a/2)
+		
+}

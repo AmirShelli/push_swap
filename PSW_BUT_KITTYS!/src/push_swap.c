@@ -49,8 +49,9 @@ int	main(int argc, char *argv[])
 	printf("- best index: %d\n *** \n", best_index(stacks));
 	push_to_a(stacks);
 	print_stack(stacks->a, 'a');
-	print_stack(stacks->b, 'b'); //index_a() is returning the wrong value
-	//final move function needed
-	
+	print_stack(stacks->b, 'b');
+	auto_move("ra", "rra", get_index(stacks, stacks->smallest), stacks);
+	print_stack(stacks->a, 'a');
+	print_stack(stacks->b, 'b');
 	//duplicates and is_int needed to finish (any error handling in general in is_valid)
 }
