@@ -1,4 +1,4 @@
-#include "push_swap.h"
+#include "../../inc/push_swap.h"
 
 void	smallsort(t_push_swap *stacks, int size)
 {

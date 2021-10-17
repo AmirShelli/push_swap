@@ -51,9 +51,10 @@ void	free_stack(t_stack *stack)
 	}
 }
 
-void	ultimate_free(t_push_swap *stacks)
+int	ultimate_free(t_push_swap *stacks)
 {
 	free_stack(stacks->a);
 	free_stack(stacks->b);
 	free(stacks);
+	return (1);
 }

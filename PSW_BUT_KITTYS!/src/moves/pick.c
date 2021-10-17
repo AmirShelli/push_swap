@@ -1,16 +1,19 @@
 #include "../../inc/push_swap.h"
 
-static void	run(t_push_swap *stacks, char *cmd, void (*func)(t_stack **))
+int	run(t_push_swap *stacks, char *cmd, void (*func)(t_stack **))
 {
 	if (cmd[1] == 'a')
 		func(&stacks->a);
 	else if (cmd[1] == 'b')
 		func(&stacks->b);
-	else
+	else if (cmd[1] == 'r')
 	{
 		func(&stacks->a);
 		func(&stacks->b);
 	}
+	else
+		return (0);
+	return (1);
 }
 
 void	pick(char *cmd, t_push_swap *stacks)
@@ -36,9 +39,6 @@ void	pick(char *cmd, t_push_swap *stacks)
 			stacks->size_b--;
 		}
 	}
-	if (cmd[ft_strlen(cmd) - 1] != '\n')
-	{
-		write(1, cmd, ft_strlen(cmd));
-		write(1, "\n", 1);
-	}
+	write(1, cmd, ft_strlen(cmd));
+	write(1, "\n", 1);
 }
