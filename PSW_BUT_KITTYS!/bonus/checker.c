@@ -70,6 +70,6 @@ int	main(int argc, char *argv[])
 	}
 	free(line);
 	if (is_sorted(stacks->a) && !stacks->b)
-		return (ultimate_free(stacks) && write(1, "OK\n", 6));
-	return (ultimate_free(stacks) && write(1, "KO\n", 6));
+		return (ultimate_free(stacks) && write(1, "OK\n", 3));
+	return (ultimate_free(stacks) && write(1, "KO\n", 3));
 }
