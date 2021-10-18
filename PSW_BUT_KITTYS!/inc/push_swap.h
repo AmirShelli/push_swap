@@ -48,13 +48,13 @@ void		reverse(t_stack **stack);
 void		smallsort(t_push_swap *stacks, int size);
 void		fivesort(t_push_swap *stacks);
 
-void		auto_move(char *smaller, char *bigger, int index,
+void		auto_move(char *which, int flag, int *index,
 				t_push_swap *stacks);
 int			best_seq(t_stack *stack);
 int			markup(t_stack *stack);
 void		push_to_b(t_push_swap *stacks);
 int			index_a(t_push_swap *stacks, int index_b);
-int			moves(int size, int index);
+int			moves(int size, int index, int *flag);
 int			best_index(t_push_swap *stacks);
 void		push_to_a(t_push_swap *stacks);
 int			run(t_push_swap *stacks, char *cmd, void (*func)(t_stack **));

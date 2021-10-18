@@ -20,22 +20,17 @@ int	is_sorted(t_stack *stack)
 	return (1);
 }
 
-void	auto_move(char *smaller, char *bigger, int index, t_push_swap *stacks)
+void	auto_move(char *which, int flag, int *movements, t_push_swap *stacks)
 {
 	int		size;
 
-	if (smaller[1] == 'a')
-		size = stacks->size_a;
-	else
-		size = stacks->size_b;
-	if (index <= size / 2)
-		while (index--)
-			pick(smaller, stacks);
+	if (!flag) //smaller rra
+		while (*movements--)
+			run(stacks, which, &reverse);
 	else
 	{
-		index = size - index;
-		while (index--)
-			pick(bigger, stacks);
+		while (*movements--)
+			run(stacks, which, &rotate);
 	}
 }
 

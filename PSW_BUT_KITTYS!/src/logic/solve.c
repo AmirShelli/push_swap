@@ -2,6 +2,10 @@
 
 void	solve(t_push_swap *stacks)
 {
+	int	flag;
+	int	smallest;
+
+	smallest = moves(stacks->size_a, get_index(stacks->a, stacks->smallest), &flag);
 	if (stacks->size_a <= 3)
 		smallsort(stacks, stacks->size_a);
 	else if (stacks->size_a <= 5)
@@ -10,7 +14,7 @@ void	solve(t_push_swap *stacks)
 	{
 		push_to_b(stacks);
 		push_to_a(stacks);
-		auto_move("ra", "rra", get_index(stacks->a, stacks->smallest), stacks);
+		auto_move("ra", flag, &smallest, stacks);
 	}
 }
 
@@ -149,12 +153,18 @@ int	index_a(t_push_swap *stacks, int index_b)
 	return (get_index(stacks->a, sup_val) + flag);
 }
 
-int	moves(int size, int index)
+int	moves(int size, int index, int *flag)
 {
 	if (index <= size / 2)
+	{	
+		*flag = 1;
 		return (index);
+	}
 	else
+	{
+		*flag = 0;
 		return (size - index);
+	}
 }
 
 int	best_index(t_push_swap *stacks)
@@ -163,15 +173,16 @@ int	best_index(t_push_swap *stacks)
 	int	num_moves;
 	int	best_moves;
 	int	best_index;
+	int	flag;
 
 	index_b = 0;
 	best_index = index_b;
-	best_moves = moves(stacks->size_b, index_b)
-		+ moves(stacks->size_a, index_a(stacks, index_b));
+	best_moves = moves(stacks->size_b, index_b, &flag)
+		+ moves(stacks->size_a, index_a(stacks, index_b), &flag);
 	while (index_b < stacks->size_b)
 	{
-		num_moves = moves(stacks->size_b, index_b)
-			+ moves(stacks->size_a, index_a(stacks, index_b));
+		num_moves = moves(stacks->size_b, index_b, &flag)
+			+ moves(stacks->size_a, index_a(stacks, index_b), &flag);
 		if (best_moves >= num_moves)
 		{
 			best_moves = num_moves;
@@ -182,16 +193,17 @@ int	best_index(t_push_swap *stacks)
 	return (best_index);
 }
 
+
 void	push_to_a(t_push_swap *stacks)
 {
 	int		index[2];
-	int		aux[2];
+	int		flag[2];
 
 	while (stacks->size_b)
 	{
-		index[0] = index_a(stacks, best_index(stacks));
-		index[1] = best_index(stacks);
-		if (index[0] <= stacks->size_a / 2 && index[1] <= stacks->size_b / 2)
+		index[0] = moves(stacks->size_a, index_a(stacks, best_index(stacks)), flag[0]);
+		index[1] = moves(stacks->size_b, (best_index(stacks), flag[1]));
+		if (flag[0] && flag[1])
 		{
 			while (index[0] && index[1])
 			{
@@ -200,27 +212,19 @@ void	push_to_a(t_push_swap *stacks)
 				index[1]--;
 			}
 		}
-		else if (index[0] > stacks->size_a / 2 && index[1] > stacks->size_b / 2)
+		else if (!flag[0] && !flag[1])
 		{
-			aux[0] = stacks->size_a - index[0];
-			aux[1] = stacks->size_b - index[1];
-			while (aux[0] && aux[1])
+			while (index[0] && index[1])
 			{	
 				pick("rrr", stacks);
-				--aux[0];
-				index[0]++;
-				if (index[0] == stacks->size_a)
-					index[0] = 0;
-				--aux[1];
-				index[1]++;
-				if (index[1] == stacks->size_b)
-					index[1] = 0;
+				index[0]--;
+				index[1]--;
 			}
 		}
 		if (index[0])
-			auto_move("ra", "rra", index[0], stacks);
+			auto_move("ra", flag[0], &index[0], stacks);
 		if (index[1])
-			auto_move("rb", "rrb", index[1], stacks);
+			auto_move("rb", flag[1], &index[1], stacks);
 		pick("pa", stacks);
 	}
 }
