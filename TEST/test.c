@@ -1,10 +1,12 @@
 #include "../../inc/push_swap.h"
 #include <stdio.h>
 
-void	print_stack(t_stack *stack, char st) 
+void	print_stack(t_stack *stack, char st)
 {
-	int index = 0;
-	printf("%c: ", st);
+	int	index;
+
+	index = 0;
+	printf ("%c: ", st);
 	if (!stack)
 	{
 		printf("\n");
