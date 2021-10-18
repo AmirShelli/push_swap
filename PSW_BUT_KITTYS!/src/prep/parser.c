@@ -46,7 +46,6 @@ static void	set_values(t_push_swap *stacks)
 	stacks->smallest = sorted[0];
 }
 
-
 int	duplicates(t_stack *stack)
 {
 	t_stack	*aux;

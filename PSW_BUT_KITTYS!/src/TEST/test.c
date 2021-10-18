@@ -1,5 +1,6 @@
 #include "../../inc/push_swap.h"
 #include <stdio.h>
+
 void	print_stack(t_stack *stack, char st) //todo remove
 {
 	int index = 0;

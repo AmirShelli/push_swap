@@ -15,20 +15,16 @@ void	smallsort(t_push_swap *stacks, int size)
 		third = stacks->a->next->next->num;
 		if (first < second && second > third && third < first)
 			pick("rra", stacks);
-		else if (first > second && second > third && third < first)
-		{
-			pick("sa", stacks);
-			pick("rra", stacks);
-		}
-		else if (first > second && second < third && third > first)
-			pick("sa", stacks);
-		else if (first < second && second > third && third > first)
-		{
-			pick("sa", stacks);
-			pick("ra", stacks);
-		}
 		else if (first > second && second < third && third < first)
 			pick("ra", stacks);
+		else if (first > second || (second > third && third > first))
+		{	
+			pick("sa", stacks);
+			if (first < second)
+				pick("ra", stacks);
+			else if (third < first)
+				pick("rra", stacks);
+		}
 	}
 }
 

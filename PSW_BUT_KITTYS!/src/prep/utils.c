@@ -22,9 +22,9 @@ int	is_sorted(t_stack *stack)
 
 void	auto_move(char *which, int flag, int *movements, t_push_swap *stacks)
 {
-	char *cmd;
-	printf("%d\n", *movements);
-	if (!flag) //smaller rra
+	char	*cmd;
+
+	if (!flag)
 	{	
 		cmd = ft_strjoin("rr", which);
 		while ((*movements)--)
@@ -35,7 +35,6 @@ void	auto_move(char *which, int flag, int *movements, t_push_swap *stacks)
 		cmd = ft_strjoin("r", which);
 		while ((*movements)--)
 			pick(cmd, stacks);
-		printf("%d\n", *movements);
 	}
 	free(cmd);
 }

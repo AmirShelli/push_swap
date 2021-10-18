@@ -1,24 +1,5 @@
 #include "../inc/push_swap.h"
 
-#include <stdio.h>
-void	print_stack(t_stack *stack, char st) //todo remove
-{
-	int index = 0;
-	printf("%c: ", st);
-	if (!stack)
-	{
-		printf("\n");
-		return ;
-	}
-	while (stack->next)
-	{
-		printf("[%d]{ %d }| ", index, stack->num);
-		stack = stack->next;
-		index++;
-	}
-	printf("[%d]{ %d }|\n", index, stack->num);
-}
-
 int	check(char *cmd, t_push_swap *stacks)
 {
 	if (cmd[0] == 's')
@@ -80,9 +61,11 @@ int	main(int argc, char *argv[])
 		return (ultimate_free(stacks) && write(1, "Error\n", 6));
 	while (get_next_line_ps(&line) > 0)
 	{
-		
-		if (check(line, stacks))
+		if (!check(line, stacks))
+		{	
+			free(line);
 			return (ultimate_free(stacks) && write(1, "Error\n", 6));
+		}
 		free(line);
 	}
 	free(line);
