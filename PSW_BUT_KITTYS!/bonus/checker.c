@@ -80,6 +80,7 @@ int	main(int argc, char *argv[])
 		return (ultimate_free(stacks) && write(1, "Error\n", 6));
 	while (get_next_line_ps(&line) > 0)
 	{
+		
 		if (check(line, stacks))
 			return (ultimate_free(stacks) && write(1, "Error\n", 6));
 		free(line);

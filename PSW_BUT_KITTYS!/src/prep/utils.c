@@ -22,16 +22,22 @@ int	is_sorted(t_stack *stack)
 
 void	auto_move(char *which, int flag, int *movements, t_push_swap *stacks)
 {
-	int		size;
-
+	char *cmd;
+	printf("%d\n", *movements);
 	if (!flag) //smaller rra
-		while (*movements--)
-			run(stacks, which, &reverse);
+	{	
+		cmd = ft_strjoin("rr", which);
+		while ((*movements)--)
+			pick(cmd, stacks);
+	}
 	else
 	{
-		while (*movements--)
-			run(stacks, which, &rotate);
+		cmd = ft_strjoin("r", which);
+		while ((*movements)--)
+			pick(cmd, stacks);
+		printf("%d\n", *movements);
 	}
+	free(cmd);
 }
 
 void	free_stack(t_stack *stack)

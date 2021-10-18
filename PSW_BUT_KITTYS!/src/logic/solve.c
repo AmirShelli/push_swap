@@ -5,7 +5,6 @@ void	solve(t_push_swap *stacks)
 	int	flag;
 	int	smallest;
 
-	smallest = moves(stacks->size_a, get_index(stacks->a, stacks->smallest), &flag);
 	if (stacks->size_a <= 3)
 		smallsort(stacks, stacks->size_a);
 	else if (stacks->size_a <= 5)
@@ -14,8 +13,13 @@ void	solve(t_push_swap *stacks)
 	{
 		push_to_b(stacks);
 		push_to_a(stacks);
-		auto_move("ra", flag, &smallest, stacks);
+		smallest = moves(stacks->size_a,
+							get_index(stacks->a, stacks->smallest), &flag);
+		auto_move("a", flag, &smallest, stacks);
 	}
+	printf("%s", is_sorted(stacks->a) ? "sorted!\n" : "F\n");
+	print_stack(stacks->a, 'a');
+	print_stack(stacks->b, 'b');
 }
 
 /*
@@ -201,8 +205,8 @@ void	push_to_a(t_push_swap *stacks)
 
 	while (stacks->size_b)
 	{
-		index[0] = moves(stacks->size_a, index_a(stacks, best_index(stacks)), flag[0]);
-		index[1] = moves(stacks->size_b, (best_index(stacks), flag[1]));
+		index[0] = moves(stacks->size_a, index_a(stacks, best_index(stacks)), &flag[0]);
+		index[1] = moves(stacks->size_b, (best_index(stacks)), &flag[1]);
 		if (flag[0] && flag[1])
 		{
 			while (index[0] && index[1])
@@ -222,9 +226,9 @@ void	push_to_a(t_push_swap *stacks)
 			}
 		}
 		if (index[0])
-			auto_move("ra", flag[0], &index[0], stacks);
+			auto_move("a", flag[0], &index[0], stacks);
 		if (index[1])
-			auto_move("rb", flag[1], &index[1], stacks);
+			auto_move("b", flag[1], &index[1], stacks);
 		pick("pa", stacks);
 	}
 }
