@@ -2,11 +2,11 @@
 
 int	run(t_push_swap *stacks, char *cmd, void (*func)(t_stack **))
 {
-	if (cmd[1] == 'a')
+	if (cmd[1] == 'a' && ft_strlen(cmd) <= 3)
 		func(&stacks->a);
-	else if (cmd[1] == 'b')
+	else if (cmd[1] == 'b' && ft_strlen(cmd) <= 3)
 		func(&stacks->b);
-	else if (cmd[1] == 'r')
+	else if (cmd[1] == 'r' && ft_strlen(cmd) <= 3)
 	{
 		func(&stacks->a);
 		func(&stacks->b);
@@ -20,9 +20,9 @@ void	pick(char *cmd, t_push_swap *stacks)
 {
 	if (cmd[0] == 's')
 		run(stacks, cmd, &swap);
-	else if (cmd[0] == 'r' && !cmd[2])
+	else if (cmd[0] == 'r' && !cmd[3])
 		run(stacks, cmd, &rotate);
-	else if (cmd[0] == 'r' && cmd[2])
+	else if (cmd[0] == 'r' && cmd[3])
 		run(stacks, &cmd[1], &reverse);
 	else if (cmd[0] == 'p')
 	{
@@ -40,5 +40,4 @@ void	pick(char *cmd, t_push_swap *stacks)
 		}
 	}
 	write(1, cmd, ft_strlen(cmd));
-	write(1, "\n", 1);
 }

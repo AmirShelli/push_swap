@@ -109,12 +109,12 @@ void	push_to_a(t_push_swap *stacks)
 		if (index[0] && index[1] && !(flag[0] ^ flag[1]))
 		{
 			both = change_index(&index[0], &index[1]);
-			auto_move("r", flag[0], &both, stacks);
+			auto_move("r\n", flag[0], &both, stacks);
 		}
 		if (index[0])
-			auto_move("a", flag[0], &index[0], stacks);
+			auto_move("a\n", flag[0], &index[0], stacks);
 		if (index[1])
-			auto_move("b", flag[1], &index[1], stacks);
-		pick("pa", stacks);
+			auto_move("b\n", flag[1], &index[1], stacks);
+		pick("pa\n", stacks);
 	}
 }

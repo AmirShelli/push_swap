@@ -7,23 +7,23 @@ void	smallsort(t_push_swap *stacks, int size)
 	int	third;
 
 	if (size == 2 && stacks->a->num > stacks->a->next->num)
-		pick("sa", stacks);
+		pick("sa\n", stacks);
 	if (!is_sorted(stacks->a))
 	{
 		first = stacks->a->num;
 		second = stacks->a->next->num;
 		third = stacks->a->next->next->num;
 		if (first < second && second > third && third < first)
-			pick("rra", stacks);
+			pick("rra\n", stacks);
 		else if (first > second && second < third && third < first)
-			pick("ra", stacks);
+			pick("ra\n", stacks);
 		else if (first > second || (second > third && third > first))
 		{	
-			pick("sa", stacks);
+			pick("sa\n", stacks);
 			if (first < second)
-				pick("ra", stacks);
+				pick("ra\n", stacks);
 			else if (third < first)
-				pick("rra", stacks);
+				pick("rra\n", stacks);
 		}
 	}
 }
@@ -52,15 +52,15 @@ void	fivesort(t_push_swap *stacks)
 	while (stacks->size_b != 2)
 	{
 		if (stacks->a->num != min && stacks->a->num != max)
-			pick("ra", stacks);
+			pick("ra\n", stacks);
 		else
-			pick("pb", stacks);
+			pick("pb\n", stacks);
 	}
 	smallsort(stacks, stacks->size_a);
 	while (stacks->size_b)
 	{
-		pick("pa", stacks);
+		pick("pa\n", stacks);
 		if (stacks->a->num == max)
-			pick("ra", stacks);
+			pick("ra\n", stacks);
 	}
 }

@@ -15,6 +15,6 @@ void	solve(t_push_swap *stacks)
 		push_to_a(stacks);
 		smallest = moves(stacks->size_a,
 				get_index(stacks->a, stacks->smallest), &flag);
-		auto_move("a", flag, &smallest, stacks);
+		auto_move("a\n", flag, &smallest, stacks);
 	}
 }

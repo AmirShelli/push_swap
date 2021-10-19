@@ -68,13 +68,13 @@ static void	chose_cmd(char **bigger,
 {
 	if (size > stacks->size_a / 2)
 	{
-		*bigger = "rra";
-		*smaller = "ra";
+		*bigger = "rra\n";
+		*smaller = "ra\n";
 	}
 	else
 	{
-		*bigger = "ra";
-		*smaller = "rra";
+		*bigger = "ra\n";
+		*smaller = "rra\n";
 	}
 }
 
@@ -91,7 +91,7 @@ void	push_to_b(t_push_swap *stacks)
 	while (aux--)
 	{
 		if (stacks->a->num >= stacks->middle && !stacks->a->keep)
-			pick("pb", stacks);
+			pick("pb\n", stacks);
 		else
 			if (!is_sorted(stacks->a))
 				pick(bigger, stacks);
@@ -99,7 +99,7 @@ void	push_to_b(t_push_swap *stacks)
 	while (stacks->size_a - size)
 	{
 		if (!stacks->a->keep)
-			pick("pb", stacks);
+			pick("pb\n", stacks);
 		else
 			if (!is_sorted(stacks->a))
 				pick(smaller, stacks);
