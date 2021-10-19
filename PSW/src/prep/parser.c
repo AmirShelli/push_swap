@@ -32,10 +32,11 @@ static void	set_values(t_push_swap *stacks)
 {
 	int		i;
 	t_stack	*a;
-	int		sorted[stacks->size_a];
+	int		*sorted;
 
 	i = -1;
 	a = stacks->a;
+	sorted = malloc(stacks->size_a * sizeof(int));
 	while (a)
 	{
 		sorted[++i] = a->num;
@@ -44,6 +45,7 @@ static void	set_values(t_push_swap *stacks)
 	sort(sorted, stacks->size_a);
 	stacks->middle = sorted[stacks->size_a / 2];
 	stacks->smallest = sorted[0];
+	free(sorted);
 }
 
 int	duplicates(t_stack *stack)

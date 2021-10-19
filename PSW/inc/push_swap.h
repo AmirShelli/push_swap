@@ -5,7 +5,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-#include <stdio.h> 
 typedef struct s_stack
 {
 	int				num;
@@ -30,7 +29,7 @@ int			is_valid(t_push_swap *stacks, char **argv, int argc);
 void		solve(t_push_swap *stacks);
 
 int			is_sorted(t_stack *stack);
-int		ultimate_free(t_push_swap *stacks);
+int			ultimate_free(t_push_swap *stacks);
 
 t_stack		*new_stack(int num);
 void		stack_push_front(t_stack **stack, t_stack *new_element);
