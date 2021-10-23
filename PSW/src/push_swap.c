@@ -23,10 +23,10 @@ int	main(int argc, char *argv[])
 	{
 		ultimate_free(stacks);
 		write(1, "Error\n", 6);
-		return (0);
+		return (1);
 	}
 	if (!is_sorted(stacks->a) && stacks->size_a > 1)
 		solve(stacks);
 	ultimate_free(stacks);
-	return (1);
+	return (0);
 }
