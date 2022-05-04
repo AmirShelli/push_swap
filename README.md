@@ -31,4 +31,3 @@ After compiling the program type the executable file and the commands you'd like
 ./push_swap <numbers>
 ```
 the program will sort the numbers and place them all in one stack, it will write down the optimal consequence of commands needed to sort the stack.
-```
